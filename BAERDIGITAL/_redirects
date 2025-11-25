@@ -1,3 +1,0 @@
-# Netlify/Vercel redirect rules
-/portfolio /index.html 200
-/* /index.html 200
