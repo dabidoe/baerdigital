@@ -1,0 +1,24 @@
+name = "baerdigital"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+
+[build]
+command = "npm run build"
+cwd = "./"
+watch_paths = ["assets/src/**/*.tsx", "assets/src/**/*.css", "index.html"]
+
+[build.upload]
+format = "service-worker"
+
+[env.production]
+name = "baerdigital-prod"
+routes = [
+  { pattern = "baerdigital.com/*", zone_name = "baerdigital.com" }
+]
+
+[site]
+bucket = "./dist"
+include = ["*.html", "*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.svg", "*.ico"]
