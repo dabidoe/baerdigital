@@ -23,12 +23,12 @@ export default function App() {
       <footer className="bg-[#1a1a1a] py-12 border-t border-[#d4af37]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            {/* Big Logo */}
+            {/* Logo */}
             <div className="mb-8 flex justify-center">
               <img
-                src="/assets/biglogo.png"
+                src="/assets/Baer Digital Studios smalllogo.png"
                 alt="Baer Digital Studios"
-                className="h-20 w-auto"
+                className="h-16 w-auto"
               />
             </div>
             <div
