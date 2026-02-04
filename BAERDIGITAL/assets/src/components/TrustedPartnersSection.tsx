@@ -25,7 +25,7 @@ export default function TrustedPartnersSection() {
           {/* Amazon */}
           <div className="transition-all duration-300 hover:scale-110">
             <img
-              src="assets/src/assets/amazon-logo-s3f-2351218662.png"
+              src="assets/src/assets/amazon-logo.jpg"
               alt="Amazon"
               className="h-32"
             />
