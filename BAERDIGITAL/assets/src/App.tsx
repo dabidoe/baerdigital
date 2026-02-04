@@ -26,7 +26,7 @@ export default function App() {
             {/* Big Logo */}
             <div className="mb-8 flex justify-center">
               <img
-                src="assets/src/assets/Biglogo.png"
+                src="/assets/src/assets/biglogo.png"
                 alt="Baer Digital Studios"
                 className="h-20 w-auto"
               />
