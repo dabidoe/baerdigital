@@ -13,30 +13,24 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a1a]/95 backdrop-blur-sm border-b border-[#d4af37]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="hidden md:grid grid-cols-[1fr_auto_1fr] items-center h-16">
-          {/* Left Column: Home, Portfolio */}
-          <div className="flex items-baseline space-x-8 justify-start">
+        <div className="hidden md:flex justify-between items-center h-16">
+          {/* Left: Logo */}
+          <a href="#home" className="flex-shrink-0 max-h-12 flex items-center">
+            <img
+              src="assets/src/assets/Baer Digital Studios smalllogo.png"
+              alt="Baer Digital Studios"
+              className="max-h-12 w-auto"
+            />
+          </a>
+
+          {/* Right: Navigation Links + CTA */}
+          <div className="flex items-baseline space-x-8">
             <a href="#home" className="text-white hover:text-[#d4af37] transition-colors duration-300">
               Home
             </a>
             <a href="#portfolio" className="text-white hover:text-[#d4af37] transition-colors duration-300">
               Portfolio
             </a>
-          </div>
-
-          {/* Center Column: Logo */}
-          <div className="flex justify-center">
-            <a href="#home" className="flex-shrink-0 max-h-12 flex items-center">
-              <img
-                src="assets/src/assets/Baer Digital Studios smalllogo.png"
-                alt="Baer Digital Studios"
-                className="max-h-12 w-auto"
-              />
-            </a>
-          </div>
-
-          {/* Right Column: Services, Contact, CTA */}
-          <div className="flex items-baseline space-x-8 justify-end">
             <a href="#services" className="text-white hover:text-[#d4af37] transition-colors duration-300">
               Services
             </a>
@@ -55,13 +49,13 @@ export default function Navigation() {
 
         {/* Mobile Layout */}
         <div className="md:hidden flex justify-between items-center h-16">
-          <div className="flex-shrink-0 max-h-12 flex items-center">
+          <a href="#home" className="flex-shrink-0 max-h-12 flex items-center">
             <img
               src="assets/src/assets/Baer Digital Studios smalllogo.png"
               alt="Baer Digital Studios"
               className="max-h-12 w-auto"
             />
-          </div>
+          </a>
 
           {/* Mobile menu button */}
           <button

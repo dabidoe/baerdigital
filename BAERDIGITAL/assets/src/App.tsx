@@ -1,7 +1,7 @@
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import PortfolioSection from './components/PortfolioSection';
-import InstitutionalImpactSection from './components/InstitutionalImpactSection';
+import FeaturedFilmsSection from './components/FeaturedFilmsSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import ServicesSection from './components/ServicesSection';
 import ContactSection from './components/ContactSection';
@@ -13,7 +13,7 @@ export default function App() {
       <main>
         <HeroSection />
         <PortfolioSection />
-        <InstitutionalImpactSection />
+        <FeaturedFilmsSection />
         <TestimonialsSection />
         <ServicesSection />
         <ContactSection />

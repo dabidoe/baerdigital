@@ -57,9 +57,36 @@
 }
 
 html {
-  font-size: var(--font-size, 14px);
   scroll-behavior: smooth;
 }
 
-.font-institutional { font-family: 'Playfair Display', Georgia, serif; }
-.font-body         { font-family: 'Inter', Helvetica, sans-serif; }
+body {
+  font-family: 'Inter', Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.875rem; }
+
+p, .font-body {
+  font-family: 'Inter', Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.font-institutional {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+}
+
+.font-body {
+  font-family: 'Inter', Helvetica, sans-serif;
+}
