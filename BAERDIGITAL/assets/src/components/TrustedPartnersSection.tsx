@@ -19,7 +19,7 @@ export default function TrustedPartnersSection() {
           {/* J.P. Morgan Chase */}
           <div className="transition-all duration-300 hover:scale-110">
             <img
-              src="/assets/src/assets/JP-Morgan-Chase-Emblem-1004076427.png"
+              src="/assets/JP-Morgan-Chase-Emblem-1004076427.png"
               alt="J.P. Morgan Chase"
               className="h-28"
             />
@@ -28,7 +28,7 @@ export default function TrustedPartnersSection() {
           {/* Dell Technologies */}
           <div className="transition-all duration-300 hover:scale-110">
             <img
-              src="/assets/src/assets/300px-Dell_Logo.svg-3902470812.png"
+              src="/assets/300px-Dell_Logo.svg-3902470812.png"
               alt="Dell Technologies"
               className="h-28"
             />
@@ -37,7 +37,7 @@ export default function TrustedPartnersSection() {
           {/* Amazon */}
           <div className="transition-all duration-300 hover:scale-110">
             <img
-              src="/assets/src/assets/amazon-logo.jpg"
+              src="/assets/amazon-logo.jpg"
               alt="Amazon"
               className="h-28"
             />
@@ -46,7 +46,7 @@ export default function TrustedPartnersSection() {
           {/* CBS News */}
           <div className="transition-all duration-300 hover:scale-110">
             <img
-              src="/assets/src/assets/CBS-Symbol-1846180216.png"
+              src="/assets/CBS-Symbol-1846180216.png"
               alt="CBS News"
               className="h-28"
             />
@@ -55,7 +55,7 @@ export default function TrustedPartnersSection() {
           {/* Larry King Now */}
           <div className="transition-all duration-300 hover:scale-110">
             <img
-              src="/assets/src/assets/Larrykingnow_show_card.jpg"
+              src="/assets/Larrykingnow_show_card.jpg"
               alt="Larry King Now"
               className="h-28"
             />

@@ -17,7 +17,7 @@ export default function Navigation() {
           {/* Left: Logo */}
           <a href="#home" className="flex-shrink-0 max-h-12 flex items-center">
             <img
-              src="/assets/src/assets/Baer Digital Studios smalllogo.png"
+              src="/assets/Baer Digital Studios smalllogo.png"
               alt="Baer Digital Studios"
               className="max-h-12 w-auto"
             />
@@ -51,7 +51,7 @@ export default function Navigation() {
         <div className="md:hidden flex justify-between items-center h-16">
           <a href="#home" className="flex-shrink-0 max-h-12 flex items-center">
             <img
-              src="/assets/src/assets/Baer Digital Studios smalllogo.png"
+              src="/assets/Baer Digital Studios smalllogo.png"
               alt="Baer Digital Studios"
               className="max-h-12 w-auto"
             />
