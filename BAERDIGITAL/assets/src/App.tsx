@@ -43,46 +43,6 @@ export default function App() {
               <span>10+ Years Experience</span>
             </div>
 
-            {/* Trusted By Bar */}
-            <div className="mt-8 pt-8 border-t border-[#d4af37]/20">
-              <p
-                style={{
-                  fontFamily: "'Inter', Helvetica, sans-serif",
-                  lineHeight: "1.6",
-                }}
-                className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-6"
-              >
-                Trusted By
-              </p>
-              <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-8">
-                <img
-                  src="assets/src/assets/300px-Dell_Logo.svg-3902470812.png"
-                  alt="Dell"
-                  className="h-8 grayscale brightness-0 invert opacity-60"
-                />
-                <img
-                  src="assets/src/assets/JP-Morgan-Chase-Emblem-1004076427.png"
-                  alt="JP Morgan"
-                  className="h-8 grayscale brightness-0 invert opacity-60"
-                />
-                <img
-                  src="assets/src/assets/CBS-Symbol-1846180216.png"
-                  alt="CBS"
-                  className="h-8 grayscale brightness-0 invert opacity-60"
-                />
-                <img
-                  src="assets/src/assets/amazon-logo-s3f-2351218662.png"
-                  alt="Amazon"
-                  className="h-8 grayscale brightness-0 invert opacity-60"
-                />
-                <img
-                  src="assets/src/assets/Larrykingnow_show_card.jpg"
-                  alt="Larry King Now"
-                  className="h-8 grayscale brightness-0 invert opacity-60"
-                />
-              </div>
-            </div>
-
             {/* Legal Text */}
             <div className="pt-8 border-t border-[#d4af37]/20">
               <p

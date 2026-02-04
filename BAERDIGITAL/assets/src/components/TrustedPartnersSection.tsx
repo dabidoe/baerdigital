@@ -2,6 +2,18 @@ export default function TrustedPartnersSection() {
   return (
     <section className="py-12 bg-[#1a1a1a] border-t border-[#d4af37]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <p
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              lineHeight: "1.8",
+            }}
+            className="text-gray-400 text-xs uppercase tracking-widest font-semibold"
+          >
+            Trusted Partners
+          </p>
+        </div>
+
         {/* Logo Row */}
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
           {/* J.P. Morgan Chase */}
