@@ -81,8 +81,8 @@ export default function ContactSection() {
           </div>
           <h2
             style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontWeight: 700,
+              fontFamily: "'DM Serif Display', serif",
+              fontWeight: 400,
             }}
             className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
           >

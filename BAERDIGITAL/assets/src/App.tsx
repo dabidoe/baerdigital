@@ -33,8 +33,8 @@ export default function App() {
             </div>
             <div
               style={{
-                fontFamily: "'Inter', Helvetica, sans-serif",
-                lineHeight: "1.6",
+                fontFamily: "'Inter', sans-serif",
+                lineHeight: "1.8",
               }}
               className="flex justify-center space-x-8 text-sm text-gray-400"
             >

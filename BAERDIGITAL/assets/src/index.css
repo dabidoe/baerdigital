@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -71,9 +71,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, .portfolio-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 h1 { font-size: 3.5rem; }
@@ -96,9 +96,9 @@ blockquote {
 }
 
 .font-institutional {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .font-body {

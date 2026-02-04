@@ -26,8 +26,8 @@ export default function HeroSection() {
           <div className="transform -translate-y-16">
             <h1
               style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 700,
+                fontFamily: "'DM Serif Display', serif",
+                fontWeight: 400,
               }}
               className="text-4xl md:text-6xl lg:text-7xl text-white leading-tight"
             >

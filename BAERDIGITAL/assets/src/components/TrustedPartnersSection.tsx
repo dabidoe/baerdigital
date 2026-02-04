@@ -2,18 +2,6 @@ export default function TrustedPartnersSection() {
   return (
     <section className="py-12 bg-[#1a1a1a] border-t border-[#d4af37]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <p
-            style={{
-              fontFamily: "'Inter', Helvetica, sans-serif",
-              lineHeight: "1.6",
-            }}
-            className="text-gray-400 text-xs uppercase tracking-widest font-semibold"
-          >
-            Trusted Partners
-          </p>
-        </div>
-
         {/* Logo Row - Larger Logos */}
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
           {/* J.P. Morgan Chase */}
@@ -21,7 +9,7 @@ export default function TrustedPartnersSection() {
             <img
               src="assets/src/assets/JP-Morgan-Chase-Emblem-1004076427.png"
               alt="J.P. Morgan Chase"
-              className="h-24"
+              className="h-32"
             />
           </div>
 
@@ -30,7 +18,7 @@ export default function TrustedPartnersSection() {
             <img
               src="assets/src/assets/300px-Dell_Logo.svg-3902470812.png"
               alt="Dell Technologies"
-              className="h-24"
+              className="h-32"
             />
           </div>
 
@@ -39,7 +27,7 @@ export default function TrustedPartnersSection() {
             <img
               src="assets/src/assets/amazon-logo-s3f-2351218662.png"
               alt="Amazon"
-              className="h-24"
+              className="h-32"
             />
           </div>
 
@@ -48,7 +36,7 @@ export default function TrustedPartnersSection() {
             <img
               src="assets/src/assets/CBS-Symbol-1846180216.png"
               alt="CBS News"
-              className="h-24"
+              className="h-32"
             />
           </div>
 
@@ -57,7 +45,7 @@ export default function TrustedPartnersSection() {
             <img
               src="assets/src/assets/Larrykingnow_show_card.jpg"
               alt="Larry King Now"
-              className="h-24"
+              className="h-32"
             />
           </div>
         </div>

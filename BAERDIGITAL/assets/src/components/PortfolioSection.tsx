@@ -48,9 +48,9 @@ export default function PortfolioSection() {
         <div className="text-center mb-8">
           <h2
             style={{
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: 900,
-              letterSpacing: "-0.03em",
+              fontFamily: "'DM Serif Display', serif",
+              fontWeight: 400,
+              letterSpacing: "-0.02em",
             }}
             className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
           >
@@ -160,9 +160,9 @@ export default function PortfolioSection() {
           <div className="text-center">
             <div
               style={{
-                fontFamily: "'Playfair Display', serif",
-                fontWeight: 900,
-                letterSpacing: "-0.03em",
+                fontFamily: "'DM Serif Display', serif",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
               }}
               className="text-3xl text-white mb-2"
             >
@@ -181,9 +181,9 @@ export default function PortfolioSection() {
           <div className="text-center">
             <div
               style={{
-                fontFamily: "'Playfair Display', serif",
-                fontWeight: 900,
-                letterSpacing: "-0.03em",
+                fontFamily: "'DM Serif Display', serif",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
               }}
               className="text-3xl text-white mb-2"
             >
@@ -202,8 +202,8 @@ export default function PortfolioSection() {
           <div className="text-center">
             <div
               style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 700,
+                fontFamily: "'DM Serif Display', serif",
+                fontWeight: 400,
               }}
               className="text-3xl text-[#00d4ff] mb-2"
             >
