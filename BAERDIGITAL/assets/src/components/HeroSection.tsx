@@ -21,10 +21,16 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="flex flex-col justify-center h-full space-y-12">
+        <div className="flex flex-col justify-center h-full space-y-8">
           {/* Main Headline - Positioned Higher */}
           <div className="transform -translate-y-16">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight font-institutional">
+            <h1
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 700,
+              }}
+              className="text-4xl md:text-6xl lg:text-7xl text-white leading-tight"
+            >
               Full-Service <span className="text-[#d4af37]">Digital Marketing</span>
               <br />
               <span className="text-[#00d4ff]">Websites. Videos. Podcasts.</span>
@@ -38,7 +44,13 @@ export default function HeroSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Subtitle - Above Button */}
           <div className="mb-8">
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-body">
+            <p
+              style={{
+                fontFamily: "'Inter', Helvetica, sans-serif",
+                lineHeight: "1.6",
+              }}
+              className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto"
+            >
               Multi-camera production, strategic content segmentation, and maximum market engagement. One team in Philadelphia, unlimited possibilities.
             </p>
           </div>

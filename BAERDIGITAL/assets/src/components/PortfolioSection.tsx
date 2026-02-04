@@ -1,104 +1,228 @@
-import { Play, ExternalLink, Award, TrendingUp, Calendar, Package } from 'lucide-react';
+import { Play, ExternalLink } from 'lucide-react';
 import { Button } from './ui/button';
-import { Card, CardContent } from './ui/card';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+
+interface PortfolioTile {
+  category: string;
+  vimeoId: string;
+  quote: string;
+  credit: string;
+  caseStudy: string;
+  ctas?: { label: string; url: string; type: 'vimeo' | 'external' }[];
+}
+
+const portfolioTiles: PortfolioTile[] = [
+  {
+    category: "THE BROADCAST STANDARD",
+    vimeoId: "707886560",
+    quote: "Baer Digital Studios brings the technical precision and calm under pressure required for high-profile network production. When the stakes are broadcast-level, they are the professionals you want behind the lens.",
+    credit: "Wendy Walker, Executive Producer | Larry King Now",
+    caseStudy: "Dominican Sisters Family Health Clinical Profile",
+    ctas: [{ label: "Watch", url: "https://vimeo.com/707886560", type: "vimeo" }],
+  },
+  {
+    category: "GLOBAL TECHNOLOGY SUMMIT",
+    vimeoId: "1161859590",
+    quote: "Exceptional reliability and executive presence. The team at Baer Digital Studios didn't just capture an interview; he captured the institutional authority required for our global leadership series that aligned with our standards.",
+    credit: "Jon Forman, Head of Intraday Liquidity | J.P. Morgan Chase",
+    caseStudy: "Executive Leadership Series",
+    ctas: [{ label: "Watch", url: "https://vimeo.com/1161859590", type: "vimeo" }],
+  },
+  {
+    category: "BRAND INTERVIEW SERIES",
+    vimeoId: "883016515",
+    quote: "Baer Digital Studios are experts crafting compelling content that resonated with our customers, crafting content into a high-engagement series. They gave our brand the voice and the cinema-grade authority we needed to own the market.",
+    credit: "Jake Fowler, CEO | Paddock Blade US3",
+    caseStudy: "Brand Interview Series",
+    ctas: [
+      { label: "Watch Series", url: "https://vimeo.com/883016515", type: "vimeo" },
+      { label: "Listen to Podcast", url: "https://open.spotify.com/show/07QCOEslplMUjYK6x1vjdb", type: "external" },
+    ],
+  },
+];
 
 export default function PortfolioSection() {
-  const stats = [
-    { label: "Years Experience", value: "10+", icon: Calendar },
-    { label: "Production Projects", value: "200+", icon: Award }
-  ];
-
-
-
   return (
-    <section id="portfolio" className="py-20 lg:py-32 bg-[#1a1a1a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="py-12 lg:py-16 bg-[#1a1a1a]">
+      <div style={{ maxWidth: "1400px" }} className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-[#d4af37]/20 border border-[#d4af37]/30 rounded-full px-4 py-2 mb-6">
-            <span className="text-[#d4af37] font-medium">Our Work</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-institutional">
+        <div className="text-center mb-8">
+          <h2
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontWeight: 900,
+              letterSpacing: "-0.03em",
+            }}
+            className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
+          >
             Our <span className="text-[#00d4ff]">Work</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 font-body">
-            Video production projects for clients across various industries
+          <p
+            style={{
+              fontFamily: "'Inter', Helvetica, sans-serif",
+              lineHeight: "1.6",
+            }}
+            className="text-lg text-gray-300 max-w-3xl mx-auto mb-6"
+          >
+            Production work across broadcast, executive, and brand storytelling
           </p>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-2xl mx-auto">
-            {stats.map((stat, index) => {
-              const IconComponent = stat.icon;
-              return (
-                <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-[#d4af37]/20 rounded-full mb-4">
-                    <IconComponent className="h-8 w-8 text-[#d4af37]" />
-                  </div>
-                  <div className="text-3xl font-bold text-white mb-2 font-institutional">{stat.value}</div>
-                  <div className="text-gray-400 font-body">{stat.label}</div>
-                </div>
-              );
-            })}
-          </div>
         </div>
 
-        {/* Video Portfolio */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 font-institutional">
-              Award-Winning Production Work
-            </h3>
-            <p className="text-gray-300 max-w-2xl mx-auto mb-8 font-body">
-              From multi-camera podcast productions and brand films to commercial content and social media campaigns, we create compelling stories that drive results.
-            </p>
+        {/* 3-Tile Grid: Videos + Testimonials */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {portfolioTiles.map((tile, index) => (
+            <div key={index} className="flex flex-col">
+              {/* Video Player - Full Width */}
+              <div className="w-full mb-0">
+                <div className="aspect-video bg-[#0a0a0a] rounded-t-lg overflow-hidden border border-[#9ca3af]/30">
+                  <iframe
+                    src={`https://player.vimeo.com/video/${tile.vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`}
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title={tile.caseStudy}
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
 
-            {/* Portfolio Highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              <Card className="bg-[#2a2a2a] border border-[#d4af37]/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-[#d4af37] mb-2 font-institutional">50+</div>
-                  <p className="text-white font-semibold mb-1 font-body">Multi-Camera Productions</p>
-                  <p className="text-gray-400 text-sm font-body">Podcasts, interviews, live events</p>
-                </CardContent>
-              </Card>
+              {/* Testimonial Card - No Top Gap */}
+              <div className="bg-[#1a1a1a]/70 backdrop-blur-md border border-[#9ca3af]/50 border-t-0 rounded-b-lg p-6 space-y-4 flex-1">
+                {/* Category Badge */}
+                <div className="inline-block border border-[#d4af37] text-[#d4af37] uppercase text-xs tracking-widest font-semibold px-3 py-1 rounded-full">
+                  {tile.category}
+                </div>
 
-              <Card className="bg-[#2a2a2a] border border-[#d4af37]/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-[#00d4ff] mb-2 font-institutional">500+</div>
-                  <p className="text-white font-semibold mb-1 font-body">Content Clips Delivered</p>
-                  <p className="text-gray-400 text-sm font-body">Short-form for maximum engagement</p>
-                </CardContent>
-              </Card>
+                {/* Quote */}
+                <blockquote
+                  style={{
+                    fontFamily: "'Inter', Helvetica, sans-serif",
+                    lineHeight: "1.6",
+                  }}
+                  className="italic text-gray-200 text-base"
+                >
+                  "{tile.quote}"
+                </blockquote>
 
-              <Card className="bg-[#2a2a2a] border border-[#d4af37]/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-[#d4af37] mb-2 font-institutional">25+</div>
-                  <p className="text-white font-semibold mb-1 font-body">Brands Grown</p>
-                  <p className="text-gray-400 text-sm font-body">Through strategic content</p>
-                </CardContent>
-              </Card>
+                {/* Credit */}
+                <div
+                  style={{
+                    fontFamily: "'Inter', Helvetica, sans-serif",
+                    lineHeight: "1.6",
+                  }}
+                  className="text-[#9ca3af] text-sm"
+                >
+                  <span className="mr-2">—</span>
+                  {tile.credit}
+                </div>
+
+                {/* Case Study */}
+                <div
+                  style={{
+                    fontFamily: "'Inter', Helvetica, sans-serif",
+                    lineHeight: "1.6",
+                  }}
+                  className="text-gray-500 text-sm"
+                >
+                  {tile.caseStudy}
+                </div>
+
+                {/* CTAs */}
+                {tile.ctas && (
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {tile.ctas.map((cta, ctaIndex) => (
+                      <Button
+                        key={ctaIndex}
+                        onClick={() => window.open(cta.url, "_blank")}
+                        className={`${
+                          ctaIndex === 0
+                            ? "bg-[#d4af37] hover:bg-[#d4af37]/90 text-[#1a1a1a]"
+                            : "border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/10 bg-transparent"
+                        } flex items-center gap-2`}
+                        size="sm"
+                      >
+                        {cta.type === "vimeo" ? (
+                          <Play className="h-4 w-4" />
+                        ) : (
+                          <ExternalLink className="h-4 w-4" />
+                        )}
+                        {cta.label}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats Below Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center">
+            <div
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 900,
+                letterSpacing: "-0.03em",
+              }}
+              className="text-3xl text-white mb-2"
+            >
+              10+
+            </div>
+            <div
+              style={{
+                fontFamily: "'Inter', Helvetica, sans-serif",
+                lineHeight: "1.6",
+              }}
+              className="text-gray-400"
+            >
+              Years Experience
             </div>
           </div>
-
-          {/* Vimeo CTA */}
           <div className="text-center">
-            <Button
-              size="lg"
-              onClick={() => window.open('https://vimeo.com/baerstudios', '_blank')}
-              variant="outline"
-              className="border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-[#1a1a1a] px-8 py-3 inline-flex items-center space-x-2"
+            <div
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 900,
+                letterSpacing: "-0.03em",
+              }}
+              className="text-3xl text-white mb-2"
             >
-              <ExternalLink className="h-5 w-5" />
-              <span>View Complete Portfolio on Vimeo</span>
-            </Button>
+              200+
+            </div>
+            <div
+              style={{
+                fontFamily: "'Inter', Helvetica, sans-serif",
+                lineHeight: "1.6",
+              }}
+              className="text-gray-400"
+            >
+              Production Projects
+            </div>
+          </div>
+          <div className="text-center">
+            <div
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 700,
+              }}
+              className="text-3xl text-[#00d4ff] mb-2"
+            >
+              50+
+            </div>
+            <div
+              style={{
+                fontFamily: "'Inter', Helvetica, sans-serif",
+                lineHeight: "1.6",
+              }}
+              className="text-gray-400"
+            >
+              Multi-Camera Productions
+            </div>
           </div>
         </div>
-
-
-
-
       </div>
+
+      <script src="https://player.vimeo.com/api/player.js"></script>
     </section>
   );
 }

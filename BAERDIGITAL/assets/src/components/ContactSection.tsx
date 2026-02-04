@@ -72,22 +72,34 @@ export default function ContactSection() {
 
 
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-[#1a1a1a]">
+    <section id="contact" className="py-12 lg:py-16 bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <div className="inline-flex items-center space-x-2 bg-[#d4af37]/20 border border-[#d4af37]/30 rounded-full px-4 py-2 mb-6">
             <span className="text-[#d4af37] font-medium">Get Started</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-institutional">
+          <h2
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 700,
+            }}
+            className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
+          >
             Ready to Tell Your <span className="text-[#d4af37]">Story?</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto font-body">
+          <p
+            style={{
+              fontFamily: "'Inter', Helvetica, sans-serif",
+              lineHeight: "1.6",
+            }}
+            className="text-lg text-gray-300 max-w-3xl mx-auto"
+          >
             Let's discuss your project and bring your vision to life with our unique capabilities and proven expertise.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Contact Form */}
           <div>
             <Card className="bg-[#1a1a1a] border-[#d4af37]/20">

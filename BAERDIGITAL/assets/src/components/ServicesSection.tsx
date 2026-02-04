@@ -33,23 +33,35 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-20 lg:py-32 bg-[#1a1a1a]">
+    <section id="services" className="py-12 lg:py-16 bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <div className="inline-flex items-center space-x-2 bg-[#d4af37]/20 border border-[#d4af37]/30 rounded-full px-4 py-2 mb-6">
             <span className="text-[#d4af37] font-medium">What We Do</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-institutional">
+          <h2
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 700,
+            }}
+            className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
+          >
             What We <span className="text-[#d4af37]">Create</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto font-body">
+          <p
+            style={{
+              fontFamily: "'Inter', Helvetica, sans-serif",
+              lineHeight: "1.6",
+            }}
+            className="text-lg text-gray-300 max-w-3xl mx-auto"
+          >
             Professional content production for businesses. Choose individual services or go full-service with our marketing package.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
@@ -78,8 +90,24 @@ export default function ServicesSection() {
                       style={{ color: service.accent }}
                     />
                   </div>
-                  <h3 className="text-white font-bold text-2xl mb-4 font-institutional">{service.title}</h3>
-                  <p className="text-gray-300 mb-6 leading-relaxed font-body">{service.description}</p>
+                  <h3
+                    style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontWeight: 700,
+                    }}
+                    className="text-white text-2xl mb-4"
+                  >
+                    {service.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "'Inter', Helvetica, sans-serif",
+                      lineHeight: "1.6",
+                    }}
+                    className="text-gray-300 mb-6"
+                  >
+                    {service.description}
+                  </p>
 
                   <div className="space-y-2 mb-6">
                     {service.offerings.map((offering, idx) => (
