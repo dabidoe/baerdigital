@@ -36,7 +36,7 @@ export default function HeroSection() {
             >
               Full-Service <span className="text-[#00d4ff]">Digital Production</span>
               <br />
-              <span className="text-[#f4f7f8]">Websites. Videos. Podcasts.</span>
+              <span className="text-[#f4f7f8]">Video. Podcasts. Brand Content.</span>
             </h1>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function HeroSection() {
               }}
               className="text-lg md:text-xl lg:text-2xl text-[#d6dde1] max-w-4xl mx-auto"
             >
-              Multi-camera production, strategic content segmentation, and maximum market engagement. One team in Philadelphia, unlimited possibilities.
+              Multi-camera production, strategic content segmentation, and content built to travel. One Philadelphia team from first frame to final rollout.
             </p>
           </div>
 
@@ -64,7 +64,7 @@ export default function HeroSection() {
               size="lg"
               className="relative overflow-hidden bg-[#00d4ff] hover:bg-[#9beeff] text-[#050607] px-12 py-6 text-xl font-bold transform hover:scale-105 transition-all duration-300 shadow-lg shadow-[#00d4ff]/20 hover:shadow-2xl hover:shadow-[#00d4ff]/35 group"
             >
-              <span className="relative z-10">Get Started</span>
+              <span className="relative z-10">Plan Your Production</span>
               <ArrowRight className="ml-3 h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
             </Button>

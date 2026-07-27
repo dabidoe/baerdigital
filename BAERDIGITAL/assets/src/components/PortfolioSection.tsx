@@ -152,7 +152,7 @@ export default function PortfolioSection() {
                   fontFamily: "'DM Serif Display', serif",
                   fontWeight: 400,
                 }}
-                className="text-3xl leading-tight text-[#f4f7f8] md:text-5xl"
+                className="text-2xl leading-tight text-[#f4f7f8] md:text-4xl"
               >
                 "{activeTile.quote}"
               </blockquote>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Mail, MapPin, Send, CheckCircle, AlertCircle, Clock, Video } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
@@ -125,23 +126,35 @@ export default function ContactSection() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-name" className="text-[#d6dde1]">
+                        Name <span aria-hidden="true">*</span>
+                      </Label>
                       <Input
-                        placeholder="Your Name *"
+                        id="contact-name"
+                        name="name"
+                        autoComplete="name"
+                        placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
-                        className="bg-[#050607] border-white/15 text-white placeholder:text-[#7f8a93] focus-visible:ring-[#00d4ff]"
+                        className="bg-[#1d242c] border-white/25 text-white placeholder:text-[#b7c0c7] focus-visible:ring-[#00d4ff]"
                         required
                         disabled={isSubmitting}
                       />
                     </div>
-                    <div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-email" className="text-[#d6dde1]">
+                        Email <span aria-hidden="true">*</span>
+                      </Label>
                       <Input
+                        id="contact-email"
+                        name="email"
                         type="email"
-                        placeholder="Email Address *"
+                        autoComplete="email"
+                        placeholder="you@company.com"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="bg-[#050607] border-white/15 text-white placeholder:text-[#7f8a93] focus-visible:ring-[#00d4ff]"
+                        className="bg-[#1d242c] border-white/25 text-white placeholder:text-[#b7c0c7] focus-visible:ring-[#00d4ff]"
                         required
                         disabled={isSubmitting}
                       />
@@ -149,43 +162,55 @@ export default function ContactSection() {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-phone" className="text-[#d6dde1]">
+                        Phone <span className="text-[#9aa5ad]">(optional)</span>
+                      </Label>
                       <Input
+                        id="contact-phone"
+                        name="phone"
                         type="tel"
-                        placeholder="Phone Number"
+                        autoComplete="tel"
+                        placeholder="(215) 555-0123"
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
-                        className="bg-[#050607] border-white/15 text-white placeholder:text-[#7f8a93] focus-visible:ring-[#00d4ff]"
+                        className="bg-[#1d242c] border-white/25 text-white placeholder:text-[#b7c0c7] focus-visible:ring-[#00d4ff]"
                         disabled={isSubmitting}
                       />
                     </div>
-                    <div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-service" className="text-[#d6dde1]">
+                        Service
+                      </Label>
                       <Select 
                         onValueChange={(value) => handleInputChange('service', value)} 
                         value={formData.service}
                         disabled={isSubmitting}
                       >
-                        <SelectTrigger className="bg-[#050607] border-white/15 text-white focus:ring-[#00d4ff]">
-                          <SelectValue placeholder="Service Needed" />
+                        <SelectTrigger id="contact-service" className="bg-[#1d242c] border-white/25 text-white focus:ring-[#00d4ff]">
+                          <SelectValue placeholder="Choose a service" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="drive-in">Video Studio with Greenscreen</SelectItem>
-                          <SelectItem value="podcast">Podcast Production</SelectItem>
-                          <SelectItem value="digital-marketing">Digital Marketing</SelectItem>
-                          <SelectItem value="mobile-ads">Mobile Advertising</SelectItem>
-                          <SelectItem value="ai-filmmaking">AI Filmmaking</SelectItem>
+                          <SelectItem value="video-production">Video Production</SelectItem>
+                          <SelectItem value="podcast-production">Podcast Production</SelectItem>
+                          <SelectItem value="brand-growth-package">Brand Growth Package</SelectItem>
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
 
-                  <div>
+                  <div className="space-y-2">
+                    <Label htmlFor="contact-message" className="text-[#d6dde1]">
+                      Project details <span aria-hidden="true">*</span>
+                    </Label>
                     <Textarea
-                      placeholder="What are you making, and when do you need it? *"
+                      id="contact-message"
+                      name="message"
+                      placeholder="What are you making, and when do you need it?"
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
-                      className="bg-[#050607] border-white/15 text-white placeholder:text-[#7f8a93] min-h-[120px] focus-visible:ring-[#00d4ff]"
+                      className="bg-[#1d242c] border-white/25 text-white placeholder:text-[#b7c0c7] min-h-[120px] focus-visible:ring-[#00d4ff]"
                       required
                       disabled={isSubmitting}
                     />
@@ -244,7 +269,12 @@ export default function ContactSection() {
                       <Mail className="h-5 w-5 text-[#050607]" />
                     </div>
                     <div>
-                      <p className="text-[#050607] font-medium">contact@baerdigitalstudios.com</p>
+                      <a
+                        href="mailto:contact@baerdigitalstudios.com"
+                        className="font-medium text-[#050607] underline-offset-4 hover:underline"
+                      >
+                        contact@baerdigitalstudios.com
+                      </a>
                       <p className="text-[#3d4751] text-sm">Response within 24 hours</p>
                     </div>
                   </div>
@@ -253,7 +283,14 @@ export default function ContactSection() {
                       <MapPin className="h-5 w-5 text-[#050607]" />
                     </div>
                     <div>
-                      <p className="text-[#050607] font-medium">1525 N Bailey St</p>
+                      <a
+                        href="https://maps.google.com/?q=1525+N+Bailey+St+Philadelphia+PA"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-medium text-[#050607] underline-offset-4 hover:underline"
+                      >
+                        1525 N Bailey St
+                      </a>
                       <p className="text-[#3d4751] text-sm">Philadelphia, PA</p>
                     </div>
                   </div>

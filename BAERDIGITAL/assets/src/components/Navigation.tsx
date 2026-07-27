@@ -12,7 +12,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#050607]/88 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#050607]/95 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="hidden md:flex justify-between items-center h-16">
           {/* Left: Logo */}
@@ -60,8 +60,12 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="text-white hover:text-[#00d4ff] transition-colors duration-300"
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -69,8 +73,8 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#050607]/98 border-t border-white/10">
+          <div id="mobile-navigation" className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#050607] border-t border-white/10">
               <a 
                 href="#home" 
                 className="block px-3 py-2 text-white hover:text-[#00d4ff] transition-colors duration-300"

@@ -11,21 +11,21 @@ export default function ServicesSection() {
     {
       icon: Video,
       title: "Video Production",
-      description: "Professional multi-camera video production that creates once, distributes everywhere. We capture from multiple angles to generate short-form clips for social media, long-form content for YouTube, and everything in between.",
+      description: "Multi-camera production designed for every channel—from polished long-form programs to sharp social clips and campaign assets.",
       offerings: ["Multi-Camera Setup", "Short-Form Social Clips", "Commercial Production", "Podcast Video Recording", "Brand Content Libraries"],
       accent: "#00d4ff"
     },
     {
       icon: Mic2,
       title: "Podcast Production",
-      description: "Multi-camera podcast production that goes beyond audio. We record your show with visual elements, create clip-ready segments, and deliver content optimized for podcast platforms, YouTube, and social media.",
+      description: "Studio-quality audio and video, edited into complete episodes and clip-ready segments for podcast, YouTube, and social platforms.",
       offerings: ["Multi-Camera Recording", "Professional Editing & Mixing", "Clip Segmentation Strategy", "Distribution Support", "Video + Audio Delivery"],
       accent: "#f4f7f8"
     },
     {
       icon: Package,
       title: "Brand Growth Package",
-      description: "Full-service content strategy designed to grow your brand. Multi-camera production, intelligent clip segmentation, and coordinated distribution across all platforms—turning one production into dozens of engaging assets.",
+      description: "Strategy, production, segmentation, and distribution in one engagement—turning each production into a library of useful brand content.",
       offerings: ["Strategic Content Planning", "Multi-Format Production", "Clip & Segment Creation", "Cross-Platform Distribution", "Growth Analytics"],
       accent: "#00d4ff",
       isPackage: true
@@ -73,7 +73,7 @@ export default function ServicesSection() {
                     : 'bg-[#151b21] border-white/10 hover:border-[#00d4ff]/45 shadow-xl shadow-black/20'
                 }`}
               >
-                <CardContent className="p-8 text-center">
+                <CardContent className="p-6 text-center lg:p-8">
                   {service.isPackage && (
                     <div className="text-center mb-4">
                       <span className="inline-block bg-[#00d4ff] text-[#050607] text-xs font-bold px-3 py-1">
@@ -126,7 +126,7 @@ export default function ServicesSection() {
                         : 'bg-[#00d4ff] hover:bg-[#9beeff] text-[#050607]'
                     }`}
                   >
-                    Get Started
+                    Choose {service.title}
                   </Button>
                 </CardContent>
               </Card>
