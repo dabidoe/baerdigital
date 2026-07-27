@@ -66,8 +66,9 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.8;
-  color: #e0e0e0;
+  color: #f4f7f8;
   font-weight: 400;
+  background: #050607;
 }
 
 h1, h2, h3, h4, h5, h6, .portfolio-title {
@@ -84,7 +85,7 @@ p {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.8;
-  color: #e0e0e0;
+  color: #d6dde1;
   font-weight: 400;
 }
 
@@ -92,7 +93,7 @@ blockquote {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   line-height: 1.8;
-  color: #e0e0e0;
+  color: #f4f7f8;
 }
 
 .font-institutional {
@@ -105,5 +106,51 @@ blockquote {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   line-height: 1.8;
-  color: #e0e0e0;
+  color: #d6dde1;
+}
+
+.section-reveal {
+  animation: section-reveal 700ms ease both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 28%;
+}
+
+.cinematic-band {
+  position: relative;
+  overflow: hidden;
+}
+
+.cinematic-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(0, 212, 255, 0.14), transparent 30%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.045), transparent 55%);
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-reveal {
+    animation: none;
+  }
 }

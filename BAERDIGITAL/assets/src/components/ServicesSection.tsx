@@ -20,7 +20,7 @@ export default function ServicesSection() {
       title: "Podcast Production",
       description: "Multi-camera podcast production that goes beyond audio. We record your show with visual elements, create clip-ready segments, and deliver content optimized for podcast platforms, YouTube, and social media.",
       offerings: ["Multi-Camera Recording", "Professional Editing & Mixing", "Clip Segmentation Strategy", "Distribution Support", "Video + Audio Delivery"],
-      accent: "#d4af37"
+      accent: "#f4f7f8"
     },
     {
       icon: Package,
@@ -33,12 +33,12 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-12 lg:py-16 bg-[#1a1a1a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="soft-grid py-16 lg:py-24 bg-[#101418]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
         {/* Section Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-2 bg-[#d4af37]/20 border border-[#d4af37]/30 rounded-full px-4 py-2 mb-6">
-            <span className="text-[#d4af37] font-medium">What We Do</span>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center space-x-2 bg-[#00d4ff]/10 border border-[#00d4ff]/30 px-4 py-2 mb-6">
+            <span className="text-[#9beeff] font-medium">What We Do</span>
           </div>
           <h2
             style={{
@@ -47,14 +47,14 @@ export default function ServicesSection() {
             }}
             className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
           >
-            What We <span className="text-[#d4af37]">Create</span>
+            What We <span className="text-[#00d4ff]">Create</span>
           </h2>
           <p
             style={{
               fontFamily: "'Inter', Helvetica, sans-serif",
               lineHeight: "1.6",
             }}
-            className="text-lg text-gray-300 max-w-3xl mx-auto"
+            className="text-lg text-[#d6dde1] max-w-3xl mx-auto"
           >
             Professional content production for businesses. Choose individual services or go full-service with our marketing package.
           </p>
@@ -67,16 +67,16 @@ export default function ServicesSection() {
             return (
               <Card
                 key={index}
-                className={`bg-[#2a2a2a] border transition-all duration-300 ${
+                className={`border transition-all duration-300 hover:-translate-y-2 ${
                   service.isPackage
-                    ? 'border-[#00d4ff] shadow-lg shadow-[#00d4ff]/20'
-                    : 'border-[#d4af37]/20 hover:border-[#d4af37]/40'
+                    ? 'bg-[#e9eef1] border-[#00d4ff] shadow-2xl shadow-[#00d4ff]/20'
+                    : 'bg-[#151b21] border-white/10 hover:border-[#00d4ff]/45 shadow-xl shadow-black/20'
                 }`}
               >
                 <CardContent className="p-8 text-center">
                   {service.isPackage && (
                     <div className="text-center mb-4">
-                      <span className="inline-block bg-[#00d4ff] text-[#1a1a1a] text-xs font-bold px-3 py-1 rounded-full">
+                      <span className="inline-block bg-[#00d4ff] text-[#050607] text-xs font-bold px-3 py-1">
                         FULL SERVICE
                       </span>
                     </div>
@@ -95,7 +95,7 @@ export default function ServicesSection() {
                       fontFamily: "'DM Serif Display', serif",
                       fontWeight: 400,
                     }}
-                    className="text-white text-2xl mb-4"
+                    className={`${service.isPackage ? 'text-[#050607]' : 'text-white'} text-2xl mb-4`}
                   >
                     {service.title}
                   </h3>
@@ -104,14 +104,14 @@ export default function ServicesSection() {
                       fontFamily: "'Inter', Helvetica, sans-serif",
                       lineHeight: "1.6",
                     }}
-                    className="text-gray-300 mb-6"
+                    className={`${service.isPackage ? 'text-[#3d4751]' : 'text-[#d6dde1]'} mb-6`}
                   >
                     {service.description}
                   </p>
 
                   <div className="space-y-2 mb-6">
                     {service.offerings.map((offering, idx) => (
-                      <div key={idx} className="flex items-center justify-center text-gray-400 text-sm font-body">
+                      <div key={idx} className={`flex items-center justify-center text-sm font-body ${service.isPackage ? 'text-[#3d4751]' : 'text-[#b7c0c7]'}`}>
                         <Check className="h-4 w-4 mr-2" style={{ color: service.accent }} />
                         <span>{offering}</span>
                       </div>
@@ -122,8 +122,8 @@ export default function ServicesSection() {
                     onClick={handleContactClick}
                     className={`w-full ${
                       service.isPackage
-                        ? 'bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-[#1a1a1a]'
-                        : 'bg-[#d4af37] hover:bg-[#d4af37]/90 text-[#1a1a1a]'
+                        ? 'bg-[#050607] hover:bg-[#1d242c] text-white'
+                        : 'bg-[#00d4ff] hover:bg-[#9beeff] text-[#050607]'
                     }`}
                   >
                     Get Started
@@ -140,7 +140,7 @@ export default function ServicesSection() {
           <Button
             onClick={handleContactClick}
             size="lg"
-            className="bg-[#d4af37] hover:bg-[#d4af37]/90 text-[#1a1a1a] px-8 py-4"
+            className="bg-transparent border border-[#00d4ff]/60 hover:bg-[#00d4ff]/10 text-[#9beeff] px-8 py-4"
           >
             Contact Us
             <ArrowRight className="h-5 w-5 ml-2" />

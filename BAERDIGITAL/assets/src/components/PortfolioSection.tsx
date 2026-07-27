@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
 import { Play, ExternalLink } from 'lucide-react';
 import { Button } from './ui/button';
+import VideoPopup from './VideoPopup';
 
 interface PortfolioTile {
   category: string;
@@ -41,16 +43,26 @@ const portfolioTiles: PortfolioTile[] = [
 ];
 
 export default function PortfolioSection() {
+  const [activeReview, setActiveReview] = useState(0);
+  const activeTile = portfolioTiles[activeReview];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveReview((current) => (current + 1) % portfolioTiles.length);
+    }, 6500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
-    <section id="portfolio" className="py-12 lg:py-16 bg-[#1a1a1a]">
-      <div style={{ maxWidth: "1400px" }} className="mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="cinematic-band py-16 lg:py-24 bg-[#050607]">
+      <div style={{ maxWidth: "1500px" }} className="relative mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
         {/* Section Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <h2
             style={{
               fontFamily: "'DM Serif Display', serif",
               fontWeight: 400,
-              letterSpacing: "-0.02em",
             }}
             className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
           >
@@ -61,86 +73,108 @@ export default function PortfolioSection() {
               fontFamily: "'Inter', Helvetica, sans-serif",
               lineHeight: "1.6",
             }}
-            className="text-lg text-gray-300 max-w-3xl mx-auto mb-6"
+            className="text-lg text-[#d6dde1] max-w-3xl mx-auto mb-6"
           >
             Production work across broadcast, executive, and brand storytelling
           </p>
         </div>
 
-        {/* 3-Tile Grid: Videos + Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {/* Large Video Thumbnails */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {portfolioTiles.map((tile, index) => (
-            <div key={index} className="flex flex-col">
-              {/* Video Player - Full Width */}
-              <div className="w-full mb-0">
-                <div className="aspect-video bg-[#0a0a0a] rounded-t-lg overflow-hidden border border-[#9ca3af]/30">
-                  <iframe
-                    src={`https://player.vimeo.com/video/${tile.vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`}
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    title={tile.caseStudy}
-                    className="w-full h-full"
-                  />
-                </div>
-              </div>
-
-              {/* Testimonial Card - No Top Gap */}
-              <div className="bg-[#1a1a1a]/70 backdrop-blur-md border border-[#9ca3af]/50 border-t-0 rounded-b-lg p-6 space-y-4 flex-1">
-                {/* Category Badge */}
-                <div className="inline-block border border-[#d4af37] text-[#d4af37] uppercase text-xs tracking-widest font-semibold px-3 py-1 rounded-full">
+            <div
+              key={index}
+              className={`group transition-all duration-300 hover:-translate-y-2 ${
+                index === 2 ? 'md:col-span-2' : ''
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => setActiveReview(index)}
+                className={`mb-4 flex w-full flex-col gap-1 border px-4 py-3 text-left transition-all duration-300 sm:flex-row sm:items-center sm:justify-between ${
+                  activeReview === index
+                    ? 'border-[#00d4ff] bg-[#00d4ff]/10 text-[#9beeff]'
+                    : 'border-white/10 bg-white/[0.03] text-[#d6dde1] hover:border-[#00d4ff]/50'
+                }`}
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.2em]">
                   {tile.category}
+                </span>
+                <span className="text-sm text-[#7f8a93]">{tile.caseStudy}</span>
+              </button>
+              <div className={index === 2 ? 'mx-auto max-w-4xl' : ''}>
+                <VideoPopup
+                  vimeoId={tile.vimeoId}
+                  title={tile.caseStudy}
+                  className="border border-white/15 shadow-2xl shadow-black/40 transition-all duration-300 group-hover:border-[#00d4ff]/60"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Rotating Reviews */}
+        <div className="mb-12 border border-white/10 bg-[#11161a]/90 shadow-2xl shadow-black/30">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="border-b border-white/10 p-6 lg:border-b-0 lg:border-r lg:p-8">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#9beeff]">
+                Client Review
+              </p>
+              <h3
+                style={{
+                  fontFamily: "'DM Serif Display', serif",
+                  fontWeight: 400,
+                }}
+                className="text-3xl text-white md:text-4xl"
+              >
+                {activeTile.caseStudy}
+              </h3>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {portfolioTiles.map((tile, index) => (
+                  <button
+                    key={tile.vimeoId}
+                    type="button"
+                    onClick={() => setActiveReview(index)}
+                    aria-label={`Show review for ${tile.caseStudy}`}
+                    className={`h-2.5 transition-all duration-300 ${
+                      activeReview === index
+                        ? 'w-12 bg-[#00d4ff]'
+                        : 'w-7 bg-white/25 hover:bg-white/50'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="p-6 lg:p-8">
+              <blockquote
+                style={{
+                  fontFamily: "'DM Serif Display', serif",
+                  fontWeight: 400,
+                }}
+                className="text-3xl leading-tight text-[#f4f7f8] md:text-5xl"
+              >
+                "{activeTile.quote}"
+              </blockquote>
+              <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="text-base font-semibold text-[#9beeff]">{activeTile.credit}</p>
+                  <p className="text-sm text-[#7f8a93]">{activeTile.category}</p>
                 </div>
-
-                {/* Quote */}
-                <blockquote
-                  style={{
-                    fontFamily: "'Inter', Helvetica, sans-serif",
-                    lineHeight: "1.6",
-                  }}
-                  className="italic text-gray-200 text-base"
-                >
-                  "{tile.quote}"
-                </blockquote>
-
-                {/* Credit */}
-                <div
-                  style={{
-                    fontFamily: "'Inter', Helvetica, sans-serif",
-                    lineHeight: "1.6",
-                  }}
-                  className="text-[#9ca3af] text-sm"
-                >
-                  <span className="mr-2">—</span>
-                  {tile.credit}
-                </div>
-
-                {/* Case Study */}
-                <div
-                  style={{
-                    fontFamily: "'Inter', Helvetica, sans-serif",
-                    lineHeight: "1.6",
-                  }}
-                  className="text-gray-500 text-sm"
-                >
-                  {tile.caseStudy}
-                </div>
-
-                {/* CTAs */}
-                {tile.ctas && (
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {tile.ctas.map((cta, ctaIndex) => (
+                {activeTile.ctas && (
+                  <div className="flex flex-wrap gap-2">
+                    {activeTile.ctas.map((cta, ctaIndex) => (
                       <Button
                         key={ctaIndex}
                         onClick={() => window.open(cta.url, "_blank")}
                         className={`${
                           ctaIndex === 0
-                            ? "bg-[#d4af37] hover:bg-[#d4af37]/90 text-[#1a1a1a]"
-                            : "border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/10 bg-transparent"
+                            ? 'bg-[#00d4ff] hover:bg-[#9beeff] text-[#050607]'
+                            : 'border border-[#00d4ff]/60 text-[#9beeff] hover:bg-[#00d4ff]/10 bg-transparent'
                         } flex items-center gap-2`}
                         size="sm"
                       >
-                        {cta.type === "vimeo" ? (
+                        {cta.type === 'vimeo' ? (
                           <Play className="h-4 w-4" />
                         ) : (
                           <ExternalLink className="h-4 w-4" />
@@ -152,12 +186,12 @@ export default function PortfolioSection() {
                 )}
               </div>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Stats Below Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
+        {/* Stats Below Reviews */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border border-white/10 bg-white/[0.04] p-4 md:p-6">
+          <div className="text-center py-4">
             <div
               style={{
                 fontFamily: "'DM Serif Display', serif",
@@ -173,12 +207,12 @@ export default function PortfolioSection() {
                 fontFamily: "'Inter', Helvetica, sans-serif",
                 lineHeight: "1.6",
               }}
-              className="text-gray-400"
+              className="text-[#b7c0c7]"
             >
               Years Experience
             </div>
           </div>
-          <div className="text-center">
+          <div className="text-center py-4 border-y md:border-x md:border-y-0 border-white/10">
             <div
               style={{
                 fontFamily: "'DM Serif Display', serif",
@@ -194,12 +228,12 @@ export default function PortfolioSection() {
                 fontFamily: "'Inter', Helvetica, sans-serif",
                 lineHeight: "1.6",
               }}
-              className="text-gray-400"
+              className="text-[#b7c0c7]"
             >
               Production Projects
             </div>
           </div>
-          <div className="text-center">
+          <div className="text-center py-4">
             <div
               style={{
                 fontFamily: "'DM Serif Display', serif",
@@ -221,8 +255,6 @@ export default function PortfolioSection() {
           </div>
         </div>
       </div>
-
-      <script src="https://player.vimeo.com/api/player.js"></script>
     </section>
   );
 }

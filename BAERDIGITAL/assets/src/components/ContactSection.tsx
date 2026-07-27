@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Send, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle, AlertCircle, Clock, Video } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -72,12 +72,12 @@ export default function ContactSection() {
 
 
   return (
-    <section id="contact" className="py-12 lg:py-16 bg-[#1a1a1a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="cinematic-band py-16 lg:py-24 bg-[#050607]">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
         {/* Section Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-2 bg-[#d4af37]/20 border border-[#d4af37]/30 rounded-full px-4 py-2 mb-6">
-            <span className="text-[#d4af37] font-medium">Get Started</span>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center space-x-2 bg-[#00d4ff]/10 border border-[#00d4ff]/30 px-4 py-2 mb-6">
+            <span className="text-[#9beeff] font-medium">Production Consult</span>
           </div>
           <h2
             style={{
@@ -86,26 +86,26 @@ export default function ContactSection() {
             }}
             className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
           >
-            Ready to Tell Your <span className="text-[#d4af37]">Story?</span>
+            Let's Plan Your Next <span className="text-[#00d4ff]">Production</span>
           </h2>
           <p
             style={{
               fontFamily: "'Inter', Helvetica, sans-serif",
               lineHeight: "1.6",
             }}
-            className="text-lg text-gray-300 max-w-3xl mx-auto"
+            className="text-lg text-[#d6dde1] max-w-3xl mx-auto"
           >
-            Let's discuss your project and bring your vision to life with our unique capabilities and proven expertise.
+            Tell us what you're making. We'll help shape the production, capture plan, and content rollout.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Contact Form */}
           <div>
-            <Card className="bg-[#1a1a1a] border-[#d4af37]/20">
+            <Card className="bg-[#101418]/95 border-white/10 shadow-2xl shadow-black/30">
               <CardHeader>
-                <CardTitle className="text-2xl text-white">Start Your Project</CardTitle>
-                <p className="text-gray-300">Tell us about your vision and we'll get back to you within 24 hours.</p>
+                <CardTitle className="text-2xl text-white">Request a Consult</CardTitle>
+                <p className="text-[#d6dde1]">Share the essentials and we'll follow up with a clear next step.</p>
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* Status Messages */}
@@ -130,7 +130,7 @@ export default function ContactSection() {
                         placeholder="Your Name *"
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
-                        className="bg-[#1a1a1a] border-[#d4af37]/30 text-white placeholder:text-gray-400"
+                        className="bg-[#050607] border-white/15 text-white placeholder:text-[#7f8a93] focus-visible:ring-[#00d4ff]"
                         required
                         disabled={isSubmitting}
                       />
@@ -141,7 +141,7 @@ export default function ContactSection() {
                         placeholder="Email Address *"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="bg-[#1a1a1a] border-[#d4af37]/30 text-white placeholder:text-gray-400"
+                        className="bg-[#050607] border-white/15 text-white placeholder:text-[#7f8a93] focus-visible:ring-[#00d4ff]"
                         required
                         disabled={isSubmitting}
                       />
@@ -155,7 +155,7 @@ export default function ContactSection() {
                         placeholder="Phone Number"
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
-                        className="bg-[#1a1a1a] border-[#d4af37]/30 text-white placeholder:text-gray-400"
+                        className="bg-[#050607] border-white/15 text-white placeholder:text-[#7f8a93] focus-visible:ring-[#00d4ff]"
                         disabled={isSubmitting}
                       />
                     </div>
@@ -165,7 +165,7 @@ export default function ContactSection() {
                         value={formData.service}
                         disabled={isSubmitting}
                       >
-                        <SelectTrigger className="bg-[#1a1a1a] border-[#d4af37]/30 text-white">
+                        <SelectTrigger className="bg-[#050607] border-white/15 text-white focus:ring-[#00d4ff]">
                           <SelectValue placeholder="Service Needed" />
                         </SelectTrigger>
                         <SelectContent>
@@ -180,51 +180,12 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Select 
-                        onValueChange={(value) => handleInputChange('projectType', value)} 
-                        value={formData.projectType}
-                        disabled={isSubmitting}
-                      >
-                        <SelectTrigger className="bg-[#1a1a1a] border-[#d4af37]/30 text-white">
-                          <SelectValue placeholder="Project Type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="commercial">Commercial</SelectItem>
-                          <SelectItem value="automotive">Automotive Content</SelectItem>
-                          <SelectItem value="social-media">Social Media</SelectItem>
-                          <SelectItem value="podcast">Podcast</SelectItem>
-                          <SelectItem value="ai-campaign">AI-Enhanced Campaign</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <Select 
-                        onValueChange={(value) => handleInputChange('budget', value)} 
-                        value={formData.budget}
-                        disabled={isSubmitting}
-                      >
-                        <SelectTrigger className="bg-[#1a1a1a] border-[#d4af37]/30 text-white">
-                          <SelectValue placeholder="Budget Range" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="under-1k">Under $1,000</SelectItem>
-                          <SelectItem value="1k-5k">$1,000 - $5,000</SelectItem>
-                          <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                          <SelectItem value="10k-plus">$10,000+</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
                   <div>
                     <Textarea
-                      placeholder="Tell us about your project... *"
+                      placeholder="What are you making, and when do you need it? *"
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
-                      className="bg-[#1a1a1a] border-[#d4af37]/30 text-white placeholder:text-gray-400 min-h-[120px]"
+                      className="bg-[#050607] border-white/15 text-white placeholder:text-[#7f8a93] min-h-[120px] focus-visible:ring-[#00d4ff]"
                       required
                       disabled={isSubmitting}
                     />
@@ -233,18 +194,18 @@ export default function ContactSection() {
                   <Button 
                     type="submit"
                     size="lg"
-                    className="w-full bg-[#d4af37] hover:bg-[#d4af37]/90 text-[#1a1a1a] flex items-center space-x-2 disabled:opacity-50"
+                    className="w-full bg-[#00d4ff] hover:bg-[#9beeff] text-[#050607] flex items-center space-x-2 disabled:opacity-50"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="h-5 w-5 animate-spin rounded-full border-2 border-[#1a1a1a]/30 border-t-[#1a1a1a]"></div>
+                        <div className="h-5 w-5 animate-spin rounded-full border-2 border-[#050607]/30 border-t-[#050607]"></div>
                         <span>Sending...</span>
                       </>
                     ) : (
                       <>
                         <Send className="h-5 w-5" />
-                        <span>Send Message</span>
+                        <span>Request Consult</span>
                       </>
                     )}
                   </Button>
@@ -256,26 +217,44 @@ export default function ContactSection() {
           {/* Contact Info & Pricing */}
           <div className="space-y-8">
             {/* Contact Information */}
-            <Card className="bg-[#1a1a1a] border-[#d4af37]/20">
+            <Card className="bg-[#f4f7f8] border-[#d6dde1] text-[#050607] shadow-2xl shadow-black/20">
               <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-white mb-6">Get In Touch</h3>
+                <h3 className="text-xl font-bold text-[#050607] mb-6">What Happens Next</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-[#00d4ff]/20 rounded-full flex items-center justify-center">
-                      <Mail className="h-5 w-5 text-[#00d4ff]" />
+                    <div className="w-10 h-10 bg-[#00d4ff]/20 flex items-center justify-center">
+                      <Clock className="h-5 w-5 text-[#00d4ff]" />
                     </div>
                     <div>
-                      <p className="text-white font-medium">contact@baerdigitalstudios.com</p>
-                      <p className="text-gray-400 text-sm">Response within 24 hours</p>
+                      <p className="text-[#050607] font-medium">Response within 24 hours</p>
+                      <p className="text-[#3d4751] text-sm">We'll review the project and suggest the cleanest next step.</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-[#d4af37]/20 rounded-full flex items-center justify-center">
-                      <MapPin className="h-5 w-5 text-[#d4af37]" />
+                    <div className="w-10 h-10 bg-[#00d4ff]/20 flex items-center justify-center">
+                      <Video className="h-5 w-5 text-[#00d4ff]" />
                     </div>
                     <div>
-                      <p className="text-white font-medium">1525 N Bailey St</p>
-                      <p className="text-gray-400 text-sm">Philadelphia, PA</p>
+                      <p className="text-[#050607] font-medium">Studio + on-location production</p>
+                      <p className="text-[#3d4751] text-sm">Video, podcasts, and multi-platform content planning.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-[#050607]/10 flex items-center justify-center">
+                      <Mail className="h-5 w-5 text-[#050607]" />
+                    </div>
+                    <div>
+                      <p className="text-[#050607] font-medium">contact@baerdigitalstudios.com</p>
+                      <p className="text-[#3d4751] text-sm">Response within 24 hours</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-[#050607]/10 flex items-center justify-center">
+                      <MapPin className="h-5 w-5 text-[#050607]" />
+                    </div>
+                    <div>
+                      <p className="text-[#050607] font-medium">1525 N Bailey St</p>
+                      <p className="text-[#3d4751] text-sm">Philadelphia, PA</p>
                     </div>
                   </div>
                 </div>
