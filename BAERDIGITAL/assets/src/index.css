@@ -224,9 +224,9 @@ blockquote {
 
 /* Cinematic direction, based on the owner's visual reference. */
 :root { --cinema-cyan: #16dcef; }
-body { background: #0b1216; line-height: 1.6; }
+body { background: #000; line-height: 1.6; }
 h1, h2, h3, h4, h5, h6, .portfolio-title, .font-institutional { font-family: 'Inter', Helvetica, sans-serif; font-weight: 700; letter-spacing: -.035em; }
-.cinema-nav { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid #ffffff12; background: #0b1115f5; backdrop-filter: blur(16px); }
+.cinema-nav { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid #ffffff12; background: #000000f5; backdrop-filter: blur(16px); }
 .cinema-nav-inner, .cinema-section-inner { width: min(1416px, calc(100% - 112px)); margin-inline: auto; }
 .cinema-nav-inner { height: 64px; display: flex; align-items: center; gap: 36px; }
 .cinema-brand { display: inline-flex; align-items: center; gap: 17px; flex-shrink: 0; }
@@ -246,12 +246,12 @@ h1, h2, h3, h4, h5, h6, .portfolio-title, .font-institutional { font-family: 'In
 .cinema-hero h1 span { color: var(--cinema-cyan); }
 .cinema-hero-description { max-width: 510px; color: #d1d9dd; font-size: 16px; line-height: 1.5; margin-top: 20px; }
 .cinema-primary { min-height: 46px; padding-inline: 25px; font-size: 14px; }
-.cinema-services { background: #0e171d; padding-block: clamp(48px, 7vw, 104px); }
+.cinema-services { background: #000; border-top: 1px solid #ffffff1a; padding-block: clamp(48px, 7vw, 104px); }
 .cinema-section-title { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin: 0 28px 30px; }
 .cinema-section-title h2 { font-size: clamp(26px, 2.6vw, 40px); color: #f5f7f8; line-height: 1.15; font-weight: 750; }
 .cinema-section-title .cinema-eyebrow { margin-bottom: 6px; }
 .cinema-section-title > a, .cinema-about a { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; color: var(--cinema-cyan); font-weight: 600; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; padding-bottom: 3px; }
-.cinema-film-dialog { max-width: min(92vw,1100px) !important; background: #0b1216; color: #f4f7f8; border-color: #ffffff26; padding: 25px; }
+.cinema-film-dialog { max-width: min(92vw,1100px) !important; background: #000; color: #f4f7f8; border-color: #ffffff26; padding: 25px; }
 .cinema-film-dialog > h2 { font-size: 18px; padding-right: 25px; }
 .cinema-film-dialog > p { color: #9fb0b9; font-size: 13px; }
 .cinema-about { background: #101a20; padding-block: 82px; border-block: 1px solid #ffffff0d; }
@@ -260,7 +260,7 @@ h1, h2, h3, h4, h5, h6, .portfolio-title, .font-institutional { font-family: 'In
 .cinema-about h2 span { color: var(--cinema-cyan); }
 .cinema-about p { color: #b9c6ce; font-size: 15px; margin-bottom: 18px; }
 .cinema-about .cinema-eyebrow { color: var(--cinema-cyan); font-size: 11px; }
-.studio-process { background: #0b1216; }
+.studio-process { background: #000; }
 .studio-process h2, .studio-contact h2 { font-weight: 750; }
 .studio-contact { background: #101a20; }
 .studio-primary { border-radius: 6px; background: var(--cinema-cyan); border-color: var(--cinema-cyan); }
@@ -308,7 +308,7 @@ section[id] { scroll-margin-top: 64px; }
 /* Work-led digital production direction. */
 .cinema-hero h1 { font-size: clamp(38px,3.9vw,60px); }
 .cinema-hero-description { max-width: 510px; }
-.selected-work { padding-block: 48px 64px; background: #0b1216; }
+.selected-work { padding-block: 48px 64px; background: #000; }
 .selected-work .cinema-section-title { align-items: end; margin-inline: 0; }
 .selected-work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 24px; }
 .selected-project { position: relative; border: 1px solid #ffffff1a; border-radius: 12px; overflow: hidden; background: #111c22; }
@@ -341,7 +341,7 @@ section[id] { scroll-margin-top: 64px; }
   align-items: center;
   min-height: clamp(320px, 53vh, 565px);
   min-height: clamp(320px, 53svh, 565px);
-  background: #0b1216;
+  background: #000;
 }
 .cinema-hero::before {
   content: "";
@@ -371,23 +371,24 @@ section[id] { scroll-margin-top: 64px; }
 
 .section-heading { margin: 0 0 clamp(18px, 2.4vw, 30px); color: #f4f7f8; font-size: clamp(29px, 3vw, 40px); line-height: 1.1; }
 .service-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.service-row { padding-top: 18px; border-top: 1px solid #ffffff30; scroll-margin-top: 80px; }
+.service-row { min-width: 0; scroll-margin-top: 80px; }
+.service-row > img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 44%; border-radius: 8px; margin-bottom: 20px; }
 .service-row h3 { margin: 0 0 10px; color: #f4f7f8; font-size: clamp(19px, 2vw, 26px); line-height: 1.15; }
 @media (max-width: 620px) {
-  .service-list { grid-template-columns: 1fr; }
+  .service-list { grid-template-columns: 1fr; gap: 36px; }
 }
 
 /* The opening screen belongs to the studio. Work starts on the next screen. */
 .cinema-hero {
   align-items: center;
-  background: #070a0e;
+  background: #000;
 }
 .cinema-hero::before {
   inset: 0;
   background:
-    linear-gradient(90deg, #070a0e 0%, #070a0ee8 25%, transparent 75%),
-    radial-gradient(ellipse at 86% 44%, #263c4d00 21%, #101b25 21.5%, #576c7c 23%, #182331 27%, #0a111b 29%, #6b7c8a 30%, #151e29 31.5%, #080c13 39%, #334c5f 40%, #0b1119 45%, transparent 46%),
-    linear-gradient(145deg, #080b0f 42%, #182734 76%, #080b0f);
+    linear-gradient(90deg, #000 0%, #000000e8 25%, transparent 75%),
+    radial-gradient(ellipse at 86% 44%, transparent 21%, #1b1b1b 21.5%, #666 23%, #262626 27%, #101010 29%, #777 30%, #202020 31.5%, #0b0b0b 39%, #444 40%, #121212 45%, transparent 46%),
+    linear-gradient(145deg, #000 42%, #252525 76%, #000);
 }
 .cinema-hero h1 { font-size: clamp(46px, 7.2vw, 112px); letter-spacing: -.075em; line-height: .98; }
 .cinema-hero-description { max-width: 44ch; margin-top: 20px; color: #c9d4dc; }
@@ -400,8 +401,8 @@ section[id] { scroll-margin-top: 64px; }
 .work-caption { padding-top: 14px; }
 .work-caption h3 { margin: 0; }
 .work-caption p { margin: 3px 0 0; font-size: 13px; color: #a9bac6; }
-.project-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.project-grid h3 { font-size: clamp(17px, 1.7vw, 22px); }
+.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(30px, 4vw, 60px) clamp(16px, 2.2vw, 34px); }
+.project-grid h3 { font-size: clamp(20px, 2.5vw, 34px); }
 .case-demo summary { cursor: pointer; padding-block: 12px; }
 
 .service-row > p { margin: 0; color: #d5e1e9; font-size: 15px; line-height: 1.6; }
@@ -413,19 +414,14 @@ section[id] { scroll-margin-top: 64px; }
 .lean-inquiry { display: grid; gap: 18px; }
 .lean-inquiry label { display: block; margin-bottom: 8px; color: #e0e8ee; }
 .lean-inquiry label span { color: #a6bac8; font-weight: 400; }
-.lean-inquiry input, .lean-inquiry textarea, .lean-inquiry [role="combobox"] { color: #f4f7f8; background: #10191f; border-color: #ffffff30; }
+.lean-inquiry input, .lean-inquiry textarea, .lean-inquiry [role="combobox"] { color: #f4f7f8; background: #111; border-color: #ffffff30; }
 .lean-inquiry .cinema-primary { justify-self: start; }
 .lean-field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .site-footer { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px solid #ffffff25; padding-block: 22px; color: #a6bac7; }
 .site-footer .cinema-wordmark { width: 98px; }
 
-@media (max-width: 1199px) {
-  .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-@media (max-width: 900px) {
-  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
 @media (max-width: 767px) {
+  .project-grid { grid-template-columns: minmax(0, 1fr); }
   .cinema-desktop-links { display: flex; gap: clamp(10px, 3.4vw, 22px); }
   .cinema-desktop-links a { font-size: 12px; }
   .cinema-nav .cinema-wordmark { width: clamp(86px, 29vw, 126px); }
@@ -434,7 +430,7 @@ section[id] { scroll-margin-top: 64px; }
   .lean-contact-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 490px) {
-  .project-grid, .lean-field-row { grid-template-columns: 1fr; }
+  .lean-field-row { grid-template-columns: 1fr; }
 }
 
 .project-thumbnail { width: 100%; padding: 0; text-align: left; cursor: pointer; }
