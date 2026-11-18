@@ -6,17 +6,18 @@ interface VideoPopupProps {
   vimeoId: string;
   title: string;
   caption: string;
+  poster?: string;
 }
 
-export default function VideoPopup({ vimeoId, title, caption }: VideoPopupProps) {
+export default function VideoPopup({ vimeoId, title, caption, poster }: VideoPopupProps) {
   const [isOpen, setIsOpen] = useState(false);
   const baseUrl = `https://player.vimeo.com/video/${vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`;
-  const posterUrl = `https://vumbnail.com/${vimeoId}.jpg`;
+  const posterUrl = poster ?? `https://vumbnail.com/${vimeoId}.jpg`;
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <article className="selected-project">
-        <ProjectThumbnail image={posterUrl} name={title} action="Watch video" />
+        <ProjectThumbnail image={posterUrl} name={title} action="Watch video" className={poster ? 'video-custom-poster' : ''} />
         <div className="work-caption"><h3>{title}</h3><p>{caption}</p></div>
       </article>
 

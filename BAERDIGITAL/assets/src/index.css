@@ -434,10 +434,12 @@ section[id] { scroll-margin-top: 64px; }
 }
 
 .project-thumbnail { width: 100%; padding: 0; text-align: left; cursor: pointer; }
+.video-custom-poster.project-thumbnail { background: #000; }
+.video-custom-poster img { object-fit: contain; object-position: center; }
 .project-thumbnail:focus-visible { outline: 2px solid var(--cinema-cyan); outline-offset: 4px; }
-.project-thumbnail:focus-visible img { transform: scale(1.045); }
+.project-thumbnail:not(.video-custom-poster):focus-visible img { transform: scale(1.045); }
 @media (hover: hover) {
-  .project-thumbnail:hover img { transform: scale(1.045); }
+  .project-thumbnail:not(.video-custom-poster):hover img { transform: scale(1.045); }
 }
 .project-links { display: flex; gap: 8px; }
 .project-links a {

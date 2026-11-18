@@ -51,8 +51,7 @@ export default function SelectedWorkSection() {
         <h2 className="section-heading">Work</h2>
         <div className="selected-work-grid project-grid">
           <FeaturedClientWork />
-          <VideoPopup vimeoId="707886560" title="Larry King Now" caption="Dominican Sisters Family Health Profile" />
-          <VideoPopup vimeoId="1161859590" title="JP Morgan" caption="Executive Leadership Series" />
+          <VideoPopup vimeoId="707886560" title="Larry King Now" caption="Dominican Sisters Family Health Profile" poster="/larry-king-now.png" />
           {projects.map(project => (
             <article className="selected-project" key={project.name}>
               <Dialog>
@@ -72,6 +71,7 @@ export default function SelectedWorkSection() {
               <div className="work-caption"><h3>{project.name}</h3><p>{project.caption}</p></div>
             </article>
           ))}
+          <VideoPopup vimeoId="1161859590" title="JP Morgan" caption="Executive Leadership Series" />
         </div>
       </div>
     </section>
