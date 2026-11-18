@@ -1,48 +1,29 @@
 import { useState } from 'react';
-import { Play } from 'lucide-react';
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from './ui/dialog';
+import ProjectThumbnail from './ProjectThumbnail';
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from './ui/dialog';
 
 interface VideoPopupProps {
   vimeoId: string;
   title: string;
-  className?: string;
+  caption: string;
 }
 
-export default function VideoPopup({ vimeoId, title, className = '' }: VideoPopupProps) {
+export default function VideoPopup({ vimeoId, title, caption }: VideoPopupProps) {
   const [isOpen, setIsOpen] = useState(false);
   const baseUrl = `https://player.vimeo.com/video/${vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`;
   const posterUrl = `https://vumbnail.com/${vimeoId}.jpg`;
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <div className={`relative aspect-video bg-[#0a0a0a] overflow-hidden ${className}`}>
-        <img
-          src={posterUrl}
-          alt=""
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050607]/90 via-[#050607]/10 to-[#050607]/20" />
-        <DialogTrigger asChild>
-          <button
-            type="button"
-            aria-label={`Open ${title} video`}
-            className="absolute inset-0 flex items-center justify-center transition-all duration-300 hover:bg-[#050607]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00d4ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050607]"
-          >
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#00d4ff] text-[#050607] shadow-xl shadow-[#00d4ff]/25 transition-transform duration-300 hover:scale-110">
-              <Play className="h-7 w-7 translate-x-0.5 fill-current" />
-            </span>
-            <span className="absolute inset-x-5 bottom-4 text-left text-sm font-semibold text-white sm:text-base">
-              Play {title}
-            </span>
-          </button>
-        </DialogTrigger>
-      </div>
+      <article className="selected-project">
+        <ProjectThumbnail image={posterUrl} name={title} action="Watch video" />
+        <div className="work-caption"><h3>{title}</h3><p>{caption}</p></div>
+      </article>
 
       <DialogContent className="max-w-[min(96vw,1280px)] border-white/20 bg-[#050607] p-3 shadow-2xl sm:max-w-[min(96vw,1280px)]">
         <DialogTitle className="sr-only">{title}</DialogTitle>
         <DialogDescription className="sr-only">
-          Video player for {title}
+          {caption}
         </DialogDescription>
         <div className="aspect-video w-full overflow-hidden bg-black">
           <iframe
