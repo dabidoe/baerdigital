@@ -17,6 +17,26 @@ export default defineConfig({
         }
         fs.cpSync(src, dest, { recursive: true, force: true })
       }
+    },
+    {
+      name: 'inline-production-css',
+      apply: 'build',
+      closeBundle() {
+        const indexPath = path.resolve(__dirname, 'dist/index.html')
+        const html = fs.readFileSync(indexPath, 'utf8')
+        const stylesheetPattern = /<link rel="stylesheet" crossorigin href="([^"]+\.css)">/
+        const stylesheetMatch = html.match(stylesheetPattern)
+
+        if (!stylesheetMatch) {
+          throw new Error('Production stylesheet link was not found in dist/index.html')
+        }
+
+        const cssPath = path.resolve(__dirname, 'dist', stylesheetMatch[1].replace(/^\//, ''))
+        const css = fs.readFileSync(cssPath, 'utf8')
+        const inlinedHtml = html.replace(stylesheetPattern, `<style>${css}</style>`)
+
+        fs.writeFileSync(indexPath, inlinedHtml)
+      }
     }
   ],
   server: {

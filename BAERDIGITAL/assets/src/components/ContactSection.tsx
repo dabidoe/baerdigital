@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import { Mail, MapPin, Send, CheckCircle, AlertCircle, Clock, Video } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Alert, AlertDescription } from './ui/alert';
 import { projectId, publicAnonKey } from '../utils/supabase/info';
 
 export default function ContactSection() {
@@ -26,6 +23,11 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (window.location.protocol === 'file:') {
+      setSubmitStatus('error');
+      setStatusMessage('This file is a preview. Use the email link to get in touch.');
+      return;
+    }
     setIsSubmitting(true);
     setSubmitStatus('idle');
     
@@ -60,7 +62,7 @@ export default function ContactSection() {
     } catch (error) {
       console.error('Contact form submission error:', error);
       setSubmitStatus('error');
-      setStatusMessage('Sorry, there was an error sending your message. Please try again or call us directly.');
+      setStatusMessage("Your message couldn’t be sent. Please try again or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -73,235 +75,42 @@ export default function ContactSection() {
 
 
   return (
-    <section id="contact" className="cinematic-band py-16 lg:py-24 bg-[#050607]">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center space-x-2 bg-[#00d4ff]/10 border border-[#00d4ff]/30 px-4 py-2 mb-6">
-            <span className="text-[#9beeff] font-medium">Production Consult</span>
-          </div>
-          <h2
-            style={{
-              fontFamily: "'DM Serif Display', serif",
-              fontWeight: 400,
-            }}
-            className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
-          >
-            Let's Plan Your Next <span className="text-[#00d4ff]">Production</span>
-          </h2>
-          <p
-            style={{
-              fontFamily: "'Inter', Helvetica, sans-serif",
-              lineHeight: "1.6",
-            }}
-            className="text-lg text-[#d6dde1] max-w-3xl mx-auto"
-          >
-            Tell us what you're making. We'll help shape the production, capture plan, and content rollout.
-          </p>
+    <section id="contact" className="lean-contact">
+      <div className="cinema-section-inner lean-contact-grid">
+        <div>
+          <h2>Start a project.</h2>
+          <a href="mailto:contact@baerdigitalstudios.com">contact@baerdigitalstudios.com</a>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          {/* Contact Form */}
+        <form className="lean-inquiry" onSubmit={handleSubmit}>
+          <div className="lean-field-row">
+            <div>
+              <Label htmlFor="contact-name">Name</Label>
+              <Input id="contact-name" name="name" autoComplete="name" required disabled={isSubmitting} value={formData.name} onChange={e => handleInputChange('name', e.target.value)} />
+            </div>
+            <div>
+              <Label htmlFor="contact-email">Email</Label>
+              <Input id="contact-email" name="email" type="email" autoComplete="email" required disabled={isSubmitting} value={formData.email} onChange={e => handleInputChange('email', e.target.value)} />
+            </div>
+          </div>
           <div>
-            <Card className="bg-[#101418]/95 border-white/10 shadow-2xl shadow-black/30">
-              <CardHeader>
-                <CardTitle className="text-2xl text-white">Request a Consult</CardTitle>
-                <p className="text-[#d6dde1]">Share the essentials and we'll follow up with a clear next step.</p>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {/* Status Messages */}
-                {submitStatus === 'success' && (
-                  <Alert className="bg-green-500/10 border-green-500/20 text-green-400">
-                    <CheckCircle className="h-4 w-4" />
-                    <AlertDescription>{statusMessage}</AlertDescription>
-                  </Alert>
-                )}
-                
-                {submitStatus === 'error' && (
-                  <Alert className="bg-red-500/10 border-red-500/20 text-red-400">
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>{statusMessage}</AlertDescription>
-                  </Alert>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-name" className="text-[#d6dde1]">
-                        Name <span aria-hidden="true">*</span>
-                      </Label>
-                      <Input
-                        id="contact-name"
-                        name="name"
-                        autoComplete="name"
-                        placeholder="Your name"
-                        value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
-                        className="bg-[#1d242c] border-white/25 text-white placeholder:text-[#b7c0c7] focus-visible:ring-[#00d4ff]"
-                        required
-                        disabled={isSubmitting}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-email" className="text-[#d6dde1]">
-                        Email <span aria-hidden="true">*</span>
-                      </Label>
-                      <Input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        placeholder="you@company.com"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="bg-[#1d242c] border-white/25 text-white placeholder:text-[#b7c0c7] focus-visible:ring-[#00d4ff]"
-                        required
-                        disabled={isSubmitting}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-phone" className="text-[#d6dde1]">
-                        Phone <span className="text-[#9aa5ad]">(optional)</span>
-                      </Label>
-                      <Input
-                        id="contact-phone"
-                        name="phone"
-                        type="tel"
-                        autoComplete="tel"
-                        placeholder="(215) 555-0123"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
-                        className="bg-[#1d242c] border-white/25 text-white placeholder:text-[#b7c0c7] focus-visible:ring-[#00d4ff]"
-                        disabled={isSubmitting}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-service" className="text-[#d6dde1]">
-                        Service
-                      </Label>
-                      <Select 
-                        onValueChange={(value) => handleInputChange('service', value)} 
-                        value={formData.service}
-                        disabled={isSubmitting}
-                      >
-                        <SelectTrigger id="contact-service" className="bg-[#1d242c] border-white/25 text-white focus:ring-[#00d4ff]">
-                          <SelectValue placeholder="Choose a service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="video-production">Video Production</SelectItem>
-                          <SelectItem value="podcast-production">Podcast Production</SelectItem>
-                          <SelectItem value="brand-growth-package">Brand Growth Package</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="contact-message" className="text-[#d6dde1]">
-                      Project details <span aria-hidden="true">*</span>
-                    </Label>
-                    <Textarea
-                      id="contact-message"
-                      name="message"
-                      placeholder="What are you making, and when do you need it?"
-                      value={formData.message}
-                      onChange={(e) => handleInputChange('message', e.target.value)}
-                      className="bg-[#1d242c] border-white/25 text-white placeholder:text-[#b7c0c7] min-h-[120px] focus-visible:ring-[#00d4ff]"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit"
-                    size="lg"
-                    className="w-full bg-[#00d4ff] hover:bg-[#9beeff] text-[#050607] flex items-center space-x-2 disabled:opacity-50"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="h-5 w-5 animate-spin rounded-full border-2 border-[#050607]/30 border-t-[#050607]"></div>
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-5 w-5" />
-                        <span>Request Consult</span>
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            <Label htmlFor="contact-service">Service <span>(optional)</span></Label>
+            <Select value={formData.service} disabled={isSubmitting} onValueChange={value => handleInputChange('service', value)}>
+              <SelectTrigger id="contact-service"><SelectValue placeholder="Choose a service" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="website-content-launch">Advertising</SelectItem>
+                <SelectItem value="website-app-development">Web Design &amp; Development</SelectItem>
+                <SelectItem value="video-production">Video Production</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
-
-          {/* Contact Info & Pricing */}
-          <div className="space-y-8">
-            {/* Contact Information */}
-            <Card className="bg-[#f4f7f8] border-[#d6dde1] text-[#050607] shadow-2xl shadow-black/20">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-[#050607] mb-6">What Happens Next</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-[#00d4ff]/20 flex items-center justify-center">
-                      <Clock className="h-5 w-5 text-[#00d4ff]" />
-                    </div>
-                    <div>
-                      <p className="text-[#050607] font-medium">Response within 24 hours</p>
-                      <p className="text-[#3d4751] text-sm">We'll review the project and suggest the cleanest next step.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-[#00d4ff]/20 flex items-center justify-center">
-                      <Video className="h-5 w-5 text-[#00d4ff]" />
-                    </div>
-                    <div>
-                      <p className="text-[#050607] font-medium">Studio + on-location production</p>
-                      <p className="text-[#3d4751] text-sm">Video, podcasts, and multi-platform content planning.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-[#050607]/10 flex items-center justify-center">
-                      <Mail className="h-5 w-5 text-[#050607]" />
-                    </div>
-                    <div>
-                      <a
-                        href="mailto:contact@baerdigitalstudios.com"
-                        className="font-medium text-[#050607] underline-offset-4 hover:underline"
-                      >
-                        contact@baerdigitalstudios.com
-                      </a>
-                      <p className="text-[#3d4751] text-sm">Response within 24 hours</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-[#050607]/10 flex items-center justify-center">
-                      <MapPin className="h-5 w-5 text-[#050607]" />
-                    </div>
-                    <div>
-                      <a
-                        href="https://maps.google.com/?q=1525+N+Bailey+St+Philadelphia+PA"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-medium text-[#050607] underline-offset-4 hover:underline"
-                      >
-                        1525 N Bailey St
-                      </a>
-                      <p className="text-[#3d4751] text-sm">Philadelphia, PA</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
+          <div>
+            <Label htmlFor="contact-message">Project details</Label>
+            <Textarea id="contact-message" name="message" rows={4} required disabled={isSubmitting} value={formData.message} onChange={e => handleInputChange('message', e.target.value)} />
           </div>
-        </div>
-
-
+          <Button className="cinema-primary" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending…' : 'Send inquiry'}</Button>
+          {submitStatus !== 'idle' && <p role={submitStatus === 'error' ? 'alert' : 'status'}>{statusMessage}</p>}
+        </form>
       </div>
     </section>
   );

@@ -1,150 +1,37 @@
-import { Video, Mic2, Package, ArrowRight, Check } from 'lucide-react';
-import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
+const services = [
+  {
+    id: 'website-content-launch',
+    title: 'Advertising Campaigns',
+    image: '/bremoir-lexington-case.jpg',
+    description: 'Launching a product? We develop the campaign concept, make the ads, and build the landing page they lead to. Get a lead spot and shorter edits for paid social, YouTube, and your site.',
+  },
+  {
+    id: 'website-app-development',
+    title: 'Web Design & Development',
+    image: '/on-record-project.jpg',
+    description: 'We design and build storefronts, business websites, and custom apps. We write the pages with you, set up search and analytics basics, and make it easy for visitors to buy, book, or get in touch.',
+  },
+  {
+    id: 'video-content-production',
+    title: 'Video Production',
+    image: '/paddock-blade-case.jpg',
+    description: 'Show customers how your product works, or let them hear from someone who uses it. We handle planning, shooting, and editing for product demos, customer stories, and interview series.',
+  },
+];
 
 export default function ServicesSection() {
-  const handleContactClick = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const services = [
-    {
-      icon: Video,
-      title: "Video Production",
-      description: "Multi-camera production designed for every channel—from polished long-form programs to sharp social clips and campaign assets.",
-      offerings: ["Multi-Camera Setup", "Short-Form Social Clips", "Commercial Production", "Podcast Video Recording", "Brand Content Libraries"],
-      accent: "#00d4ff"
-    },
-    {
-      icon: Mic2,
-      title: "Podcast Production",
-      description: "Studio-quality audio and video, edited into complete episodes and clip-ready segments for podcast, YouTube, and social platforms.",
-      offerings: ["Multi-Camera Recording", "Professional Editing & Mixing", "Clip Segmentation Strategy", "Distribution Support", "Video + Audio Delivery"],
-      accent: "#f4f7f8"
-    },
-    {
-      icon: Package,
-      title: "Brand Growth Package",
-      description: "Strategy, production, segmentation, and distribution in one engagement—turning each production into a library of useful brand content.",
-      offerings: ["Strategic Content Planning", "Multi-Format Production", "Clip & Segment Creation", "Cross-Platform Distribution", "Growth Analytics"],
-      accent: "#00d4ff",
-      isPackage: true
-    }
-  ];
-
   return (
-    <section id="services" className="soft-grid py-16 lg:py-24 bg-[#101418]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center space-x-2 bg-[#00d4ff]/10 border border-[#00d4ff]/30 px-4 py-2 mb-6">
-            <span className="text-[#9beeff] font-medium">What We Do</span>
-          </div>
-          <h2
-            style={{
-              fontFamily: "'DM Serif Display', serif",
-              fontWeight: 400,
-            }}
-            className="text-3xl md:text-4xl lg:text-5xl text-white mb-6"
-          >
-            What We <span className="text-[#00d4ff]">Create</span>
-          </h2>
-          <p
-            style={{
-              fontFamily: "'Inter', Helvetica, sans-serif",
-              lineHeight: "1.6",
-            }}
-            className="text-lg text-[#d6dde1] max-w-3xl mx-auto"
-          >
-            Professional content production for businesses. Choose individual services or go full-service with our marketing package.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <Card
-                key={index}
-                className={`border transition-all duration-300 hover:-translate-y-2 ${
-                  service.isPackage
-                    ? 'bg-[#e9eef1] border-[#00d4ff] shadow-2xl shadow-[#00d4ff]/20'
-                    : 'bg-[#151b21] border-white/10 hover:border-[#00d4ff]/45 shadow-xl shadow-black/20'
-                }`}
-              >
-                <CardContent className="p-6 text-center lg:p-8">
-                  {service.isPackage && (
-                    <div className="text-center mb-4">
-                      <span className="inline-block bg-[#00d4ff] text-[#050607] text-xs font-bold px-3 py-1">
-                        FULL SERVICE
-                      </span>
-                    </div>
-                  )}
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-                    style={{ backgroundColor: `${service.accent}20` }}
-                  >
-                    <IconComponent
-                      className="h-10 w-10"
-                      style={{ color: service.accent }}
-                    />
-                  </div>
-                  <h3
-                    style={{
-                      fontFamily: "'DM Serif Display', serif",
-                      fontWeight: 400,
-                    }}
-                    className={`${service.isPackage ? 'text-[#050607]' : 'text-white'} text-2xl mb-4`}
-                  >
-                    {service.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: "'Inter', Helvetica, sans-serif",
-                      lineHeight: "1.6",
-                    }}
-                    className={`${service.isPackage ? 'text-[#3d4751]' : 'text-[#d6dde1]'} mb-6`}
-                  >
-                    {service.description}
-                  </p>
-
-                  <div className="space-y-2 mb-6">
-                    {service.offerings.map((offering, idx) => (
-                      <div key={idx} className={`flex items-center justify-center text-sm font-body ${service.isPackage ? 'text-[#3d4751]' : 'text-[#b7c0c7]'}`}>
-                        <Check className="h-4 w-4 mr-2" style={{ color: service.accent }} />
-                        <span>{offering}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Button
-                    onClick={handleContactClick}
-                    className={`w-full ${
-                      service.isPackage
-                        ? 'bg-[#050607] hover:bg-[#1d242c] text-white'
-                        : 'bg-[#00d4ff] hover:bg-[#9beeff] text-[#050607]'
-                    }`}
-                  >
-                    Choose {service.title}
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-
-
-        {/* CTA */}
-        <div className="text-center">
-          <Button
-            onClick={handleContactClick}
-            size="lg"
-            className="bg-transparent border border-[#00d4ff]/60 hover:bg-[#00d4ff]/10 text-[#9beeff] px-8 py-4"
-          >
-            Contact Us
-            <ArrowRight className="h-5 w-5 ml-2" />
-          </Button>
+    <section id="services" className="cinema-services">
+      <div className="cinema-section-inner services-layout">
+        <h2 className="section-heading">Services</h2>
+        <div className="service-list">
+          {services.map(({ id, title, image, description }) => (
+            <article className="service-row" id={id} key={id}>
+              <img src={image} alt="" loading="lazy" decoding="async" />
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
