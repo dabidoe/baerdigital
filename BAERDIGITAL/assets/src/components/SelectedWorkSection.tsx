@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from './ui/dial
 const projects = [
   {
     name: 'RenovAgent',
-    caption: 'Room Planning & Visualization',
+    caption: 'AI Renovation Planning & Estimating',
     image: '/renovagent-project.jpg',
     description: 'A renovation planning app with room visualization, material estimates, and interactive planning tools.',
     scope: ['Built the web app and room visualization tools.', 'Produced the product demo video.'],
@@ -19,7 +19,7 @@ const projects = [
   },
   {
     name: 'MythOS',
-    caption: 'Worldbuilding & Playable Stories',
+    caption: 'AI WORLDBUILDING & INTERACTIVE STORYTELLING',
     image: '/mythos-project.jpg',
     description: 'An interactive storytelling platform for building characters, exploring worlds, and playing through stories.',
     scope: ['Built the web app, character creator, and interactive maps.', 'Connected AI-generated storytelling with the game’s characters and worlds.'],

@@ -398,7 +398,7 @@ section[id] { scroll-margin-top: 64px; }
 .selected-work > .cinema-section-inner { width: min(1560px, calc(100% - clamp(40px, 6vw, 96px))); }
 .selected-project { border: 0; background: transparent; border-radius: 0; overflow: visible; }
 .selected-project-image { aspect-ratio: 16 / 9; border-radius: 8px; }
-.project-grid > .selected-project:nth-child(-n+2) .selected-project-image { aspect-ratio: 16 / 10; }
+.project-grid > .selected-project:nth-child(-n+2) .selected-project-image { aspect-ratio: 2 / 1; }
 .work-caption { padding-top: 14px; }
 .work-caption h3 { margin: 0; }
 .work-caption p { margin: 3px 0 0; font-size: 13px; color: #a9bac6; }
