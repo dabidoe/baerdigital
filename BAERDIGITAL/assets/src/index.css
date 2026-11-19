@@ -452,7 +452,10 @@ section[id] { scroll-margin-top: 64px; }
   border-radius: 50%;
 }
 .project-links a:hover, .project-links a:focus-visible { color: var(--cinema-cyan); border-color: var(--cinema-cyan); }
-.cinema-film-dialog .project-contribution { color: #e0e9ee; }
+.project-scope { color: #e0e9ee; }
+.project-scope h3 { margin: 0 0 6px; color: #f4f7f8; font-size: 15px; }
+.project-scope ul { margin: 0; padding-inline-start: 20px; list-style: disc; font-size: 14px; }
+.project-scope li + li { margin-top: 3px; }
 
 .client-proof { background: #000; border-block: 1px solid #ffffff1a; padding-block: clamp(48px, 7vw, 100px); }
 .client-proof-projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 44px); }

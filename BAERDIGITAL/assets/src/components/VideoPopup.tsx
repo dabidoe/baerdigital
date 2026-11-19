@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import ProjectThumbnail from './ProjectThumbnail';
+import ProjectLinks from './ProjectLinks';
+import ProjectScope from './ProjectScope';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from './ui/dialog';
 
 interface VideoPopupProps {
@@ -7,10 +9,12 @@ interface VideoPopupProps {
   title: string;
   caption: string;
   poster?: string;
-  contribution?: string;
+  scope: string[];
+  website?: string;
+  youtube?: string;
 }
 
-export default function VideoPopup({ vimeoId, title, caption, poster, contribution }: VideoPopupProps) {
+export default function VideoPopup({ vimeoId, title, caption, poster, scope, website, youtube }: VideoPopupProps) {
   const [isOpen, setIsOpen] = useState(false);
   const baseUrl = `https://player.vimeo.com/video/${vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`;
   const posterUrl = poster ?? `https://vumbnail.com/${vimeoId}.jpg`;
@@ -22,11 +26,11 @@ export default function VideoPopup({ vimeoId, title, caption, poster, contributi
         <div className="work-caption"><h3>{title}</h3><p>{caption}</p></div>
       </article>
 
-      <DialogContent className={contribution ? 'cinema-film-dialog selected-project-dialog' : 'max-w-[min(96vw,1280px)] border-white/20 bg-[#050607] p-3 shadow-2xl sm:max-w-[min(96vw,1280px)]'}>
-        <DialogTitle className={contribution ? undefined : 'sr-only'}>{title}</DialogTitle>
-        <DialogDescription className={contribution ? 'project-contribution' : 'sr-only'}>
-          {contribution ?? caption}
-        </DialogDescription>
+      <DialogContent className="cinema-film-dialog selected-project-dialog">
+        <DialogTitle>{title}</DialogTitle>
+        <DialogDescription>{caption}</DialogDescription>
+        <ProjectScope items={scope} />
+        {(website || youtube) && <ProjectLinks name={title} website={website} youtube={youtube} />}
         <div className="aspect-video w-full overflow-hidden bg-black">
           <iframe
             src={`${baseUrl}&autoplay=1`}

@@ -16,17 +16,17 @@ const brands = [
 
 const testimonials = [
   {
-    quote: 'Baer Digital Studios brings the technical precision and calm under pressure required for high-profile network production. When the stakes are broadcast-level, they are the professionals you want behind the lens.',
+    quote: 'Baer Digital Studios brings the technical precision and calm under pressure required for high-profile network production.',
     name: 'Wendy Walker',
     credit: 'Executive Producer, Larry King Now',
   },
   {
-    quote: "Exceptional reliability and executive presence. The team at Baer Digital Studios didn't just capture an interview; he captured the institutional authority required for our global leadership series that aligned with our standards.",
+    quote: 'Exceptional reliability and executive presence.',
     name: 'Jon Forman',
     credit: 'Head of Intraday Liquidity, J.P. Morgan Chase',
   },
   {
-    quote: 'Baer Digital Studios are experts crafting compelling content that resonated with our customers, crafting content into a high-engagement series. They gave our brand the voice and the cinema-grade authority we needed to own the market.',
+    quote: 'crafting compelling content that resonated with our customers',
     name: 'Jake Fowler',
     credit: 'CEO, Paddock Blade US3',
   },
@@ -44,7 +44,7 @@ export default function TrustedPartnersSection() {
             <article key={project.name}>
               <h3>{project.name}</h3>
               <p>{project.contribution}</p>
-              {'website' in project && <ProjectLinks {...project} />}
+              <ProjectLinks {...project} />
             </article>
           ))}
         </div>

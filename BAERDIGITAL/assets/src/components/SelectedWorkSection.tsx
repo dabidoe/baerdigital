@@ -1,5 +1,6 @@
 import ProjectThumbnail from './ProjectThumbnail';
 import ProjectLinks from './ProjectLinks';
+import ProjectScope from './ProjectScope';
 import FeaturedClientWork from './FeaturedClientWork';
 import VideoPopup from './VideoPopup';
 import { clientWorkDetails } from './clientWorkDetails';
@@ -11,7 +12,7 @@ const projects = [
     caption: 'Room Planning & Visualization',
     image: '/renovagent-project.jpg',
     description: 'A renovation planning app with room visualization, material estimates, and interactive planning tools.',
-    role: 'Web app, room visualization tools, and product demo video',
+    scope: ['Built the web app and room visualization tools.', 'Produced the product demo video.'],
     website: 'https://renovagent.app/',
     preview: 'https://www.youtube-nocookie.com/embed/E97iGaoiMz4',
     video: true,
@@ -21,7 +22,7 @@ const projects = [
     caption: 'Worldbuilding & Playable Stories',
     image: '/mythos-project.jpg',
     description: 'An interactive storytelling platform for building characters, exploring worlds, and playing through stories.',
-    role: 'Web app, character creation, maps, and interactive gameplay',
+    scope: ['Built the web app and character creator.', 'Developed interactive maps and gameplay.'],
     website: 'https://www.mythos.quest/',
     preview: 'https://www.mythos.quest/',
   },
@@ -30,7 +31,7 @@ const projects = [
     caption: 'Sports Apparel Storefront',
     image: '/on-record-project.jpg',
     description: 'A sports apparel brand with original shirt designs and a storefront built around fan rivalries.',
-    role: 'Brand website, storefront, and original apparel designs',
+    scope: ['Built the brand website and online storefront.', 'Designed original apparel graphics.'],
     website: 'https://onrecord.davebaereastridge.workers.dev/',
     preview: 'https://onrecord.davebaereastridge.workers.dev/',
   },
@@ -39,7 +40,8 @@ const projects = [
     caption: 'AI Character Creation Platform',
     image: 'https://i.ytimg.com/vi/BzZD3ZtrBtg/hqdefault.jpg',
     description: 'A tabletop RPG tool for creating characters, maps, items, and spells.',
-    role: 'Web app, product landing page, and demo video',
+    scope: ['Built the web app and product landing page.', 'Produced the demo video.'],
+    website: 'https://characterfoundry.pages.dev/',
     preview: 'https://www.youtube-nocookie.com/embed/BzZD3ZtrBtg',
     video: true,
   },
@@ -52,7 +54,7 @@ export default function SelectedWorkSection() {
         <h2 className="section-heading">Work</h2>
         <div className="selected-work-grid project-grid">
           <FeaturedClientWork />
-          <VideoPopup vimeoId="707886560" title="Larry King Now" caption="Dominican Sisters Family Health Profile" poster="/larry-king-now.png" />
+          <VideoPopup vimeoId="707886560" title="Larry King Now" caption="Dominican Sisters Family Health Profile" poster="/larry-king-now.png" scope={['Produced the Dominican Sisters Family Health profile.']} youtube="https://www.youtube.com/@LarryKing" />
           {projects.map(project => (
             <article className="selected-project" key={project.name}>
               <Dialog>
@@ -60,7 +62,7 @@ export default function SelectedWorkSection() {
                 <DialogContent className="cinema-film-dialog selected-project-dialog">
                   <DialogTitle>{project.name}</DialogTitle>
                   <DialogDescription>{project.description}</DialogDescription>
-                  <p className="project-contribution">{project.role}</p>
+                  <ProjectScope items={project.scope} />
                   {project.website && <ProjectLinks name={project.name} website={project.website} />}
                   {project.video ? (
                     <iframe className="selected-project-player" src={project.preview} title={`${project.name} demo on YouTube`} allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
@@ -72,7 +74,7 @@ export default function SelectedWorkSection() {
               <div className="work-caption"><h3>{project.name}</h3><p>{project.caption}</p></div>
             </article>
           ))}
-          <VideoPopup vimeoId="1161859590" title={clientWorkDetails.jpMorgan.name} caption="Executive Leadership Series" contribution={clientWorkDetails.jpMorgan.contribution} />
+          <VideoPopup vimeoId="1161859590" title={clientWorkDetails.jpMorgan.name} caption="Executive Leadership Series" scope={clientWorkDetails.jpMorgan.scope} website={clientWorkDetails.jpMorgan.website} />
         </div>
       </div>
     </section>

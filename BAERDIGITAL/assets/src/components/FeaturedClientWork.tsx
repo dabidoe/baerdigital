@@ -1,5 +1,6 @@
 import ProjectLinks from './ProjectLinks';
 import ProjectThumbnail from './ProjectThumbnail';
+import ProjectScope from './ProjectScope';
 import { clientWorkDetails } from './clientWorkDetails';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from './ui/dialog';
 
@@ -26,14 +27,14 @@ const cases = [
 export default function FeaturedClientWork() {
   return (
     <>
-      {cases.map(({ id, name, caption, description, contribution, film, interview, poster, website, instagram, youtube }) => (
+      {cases.map(({ id, name, caption, description, scope, film, interview, poster, website, instagram, youtube }) => (
         <article className="selected-project" id={id} key={id}>
           <Dialog>
             <ProjectThumbnail image={poster} name={name} />
             <DialogContent className="cinema-film-dialog selected-project-dialog">
               <DialogTitle>{name}</DialogTitle>
               <DialogDescription>{description}</DialogDescription>
-              <p className="project-contribution">{contribution}</p>
+              <ProjectScope items={scope} />
               <ProjectLinks name={name} website={website} instagram={instagram} youtube={youtube} />
               <iframe className="selected-project-player" src={film.src} title={film.title} allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
               {interview && (
