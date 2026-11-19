@@ -3,6 +3,7 @@ import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
 import SelectedWorkSection from './components/SelectedWorkSection';
 import ContactSection from './components/ContactSection';
+import TrustedPartnersSection from './components/TrustedPartnersSection';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <HeroSection />
         <SelectedWorkSection />
         <ServicesSection />
+        <TrustedPartnersSection />
         <ContactSection />
       </main>
       <footer className="site-footer cinema-section-inner">

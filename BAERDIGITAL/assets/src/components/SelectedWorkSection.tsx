@@ -2,6 +2,7 @@ import ProjectThumbnail from './ProjectThumbnail';
 import ProjectLinks from './ProjectLinks';
 import FeaturedClientWork from './FeaturedClientWork';
 import VideoPopup from './VideoPopup';
+import { clientWorkDetails } from './clientWorkDetails';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from './ui/dialog';
 
 const projects = [
@@ -71,7 +72,7 @@ export default function SelectedWorkSection() {
               <div className="work-caption"><h3>{project.name}</h3><p>{project.caption}</p></div>
             </article>
           ))}
-          <VideoPopup vimeoId="1161859590" title="JP Morgan" caption="Executive Leadership Series" />
+          <VideoPopup vimeoId="1161859590" title={clientWorkDetails.jpMorgan.name} caption="Executive Leadership Series" contribution={clientWorkDetails.jpMorgan.contribution} />
         </div>
       </div>
     </section>
