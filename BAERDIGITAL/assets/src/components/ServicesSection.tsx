@@ -8,8 +8,8 @@ const services = [
   {
     id: 'website-app-development',
     title: 'Web Design & Development',
-    image: '/on-record-project.jpg',
-    description: 'We design and build storefronts, business websites, and custom apps. We write the pages with you, set up search and analytics basics, and make it easy for visitors to buy, book, or get in touch.',
+    image: '/mythos-project.jpg',
+    description: 'We design websites and build custom apps, including AI agents that work with your data and tools. We also build the backend that handles model requests, accounts, and usage limits.',
   },
   {
     id: 'video-content-production',
@@ -27,7 +27,7 @@ export default function ServicesSection() {
         <div className="service-list">
           {services.map(({ id, title, image, description }) => (
             <article className="service-row" id={id} key={id}>
-              <img src={image} alt="" loading="lazy" decoding="async" />
+              <div className="service-photo"><img src={image} alt="" loading="lazy" decoding="async" /></div>
               <h3>{title}</h3>
               <p>{description}</p>
             </article>
