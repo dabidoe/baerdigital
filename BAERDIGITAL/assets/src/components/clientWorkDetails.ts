@@ -1,7 +1,7 @@
 export const clientWorkDetails = {
   bremoir: {
     name: 'Bremoir Watches',
-    contribution: 'We produced the Lexington watch ad and managed the campaign.',
+    contribution: 'We produced the Lexington watch spot and managed the ad campaign.',
   },
   paddock: {
     name: 'Paddock Blade',

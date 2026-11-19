@@ -8,7 +8,7 @@ import { clientWorkDetails } from './clientWorkDetails';
 
 const brands = [
   { name: 'JPMorgan Chase', image: jpMorganLogo, url: 'https://www.jpmorganchase.com/' },
-  { name: 'Dell Technologies', image: dellLogo, url: 'https://www.dell.com/en-us/lp/dell-technologies' },
+  { name: 'Dell Technologies', image: dellLogo, url: 'https://www.dell.com/en-us/learn/our-company/lp/who-we-are' },
   { name: 'Amazon', image: amazonLogo, url: 'https://www.amazon.com/', treatment: 'amazon-mark' },
   { name: 'CBS News', image: cbsLogo, url: 'https://www.cbsnews.com/' },
   { name: 'Larry King Now', image: larryKingLogo, url: 'https://www.youtube.com/@LarryKing', treatment: 'larry-mark' },
