@@ -1,7 +1,7 @@
-export default function ProjectScope({ items }: { items: string[] }) {
+export default function ProjectScope({ items, heading = 'What we did' }: { items: string[]; heading?: string }) {
   return (
     <div className="project-scope">
-      <h3>What we did</h3>
+      <h3>{heading}</h3>
       <ul>
         {items.map(item => <li key={item}>{item}</li>)}
       </ul>

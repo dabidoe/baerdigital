@@ -2,6 +2,7 @@ import ProjectThumbnail from './ProjectThumbnail';
 import ProjectLinks from './ProjectLinks';
 import ProjectScope from './ProjectScope';
 import FeaturedClientWork from './FeaturedClientWork';
+import WebDevelopmentCard from './WebDevelopmentCard';
 import VideoPopup from './VideoPopup';
 import { clientWorkDetails } from './clientWorkDetails';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from './ui/dialog';
@@ -15,25 +16,14 @@ const projects = [
     scope: ['Built the web app and room visualization tools.', 'Produced the product demo video.'],
     website: 'https://renovagent.app/',
     preview: 'https://www.youtube-nocookie.com/embed/E97iGaoiMz4',
-    video: true,
   },
   {
     name: 'MythOS',
     caption: 'Worldbuilding & Playable Stories',
     image: '/mythos-project.jpg',
     description: 'An interactive storytelling platform for building characters, exploring worlds, and playing through stories.',
-    scope: ['Built the web app and character creator.', 'Developed interactive maps and gameplay.'],
+    scope: ['Built the web app, character creator, and interactive maps.', 'Connected AI-generated storytelling with the game’s characters and worlds.'],
     website: 'https://www.mythos.quest/',
-    preview: 'https://www.mythos.quest/',
-  },
-  {
-    name: 'On Record',
-    caption: 'Sports Apparel Storefront',
-    image: '/on-record-project.jpg',
-    description: 'A sports apparel brand with original shirt designs and a storefront built around fan rivalries.',
-    scope: ['Built the brand website and online storefront.', 'Designed original apparel graphics.'],
-    website: 'https://onrecord.davebaereastridge.workers.dev/',
-    preview: 'https://onrecord.davebaereastridge.workers.dev/',
   },
   {
     name: 'Character Foundry',
@@ -43,37 +33,43 @@ const projects = [
     scope: ['Built the web app and product landing page.', 'Produced the demo video.'],
     website: 'https://characterfoundry.pages.dev/',
     preview: 'https://www.youtube-nocookie.com/embed/BzZD3ZtrBtg',
-    video: true,
   },
 ];
 
+function AppProject({ project }: { project: (typeof projects)[number] }) {
+  return (
+    <article className="selected-project">
+      <Dialog>
+        <ProjectThumbnail image={project.image} name={project.name} />
+        <DialogContent className="cinema-film-dialog selected-project-dialog">
+          <DialogTitle>{project.name}</DialogTitle>
+          <DialogDescription>{project.description}</DialogDescription>
+          <ProjectScope items={project.scope} />
+          <ProjectLinks name={project.name} website={project.website} />
+          {project.preview && (
+            <iframe className="selected-project-player" src={project.preview} title={`${project.name} demo on YouTube`} allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+          )}
+        </DialogContent>
+      </Dialog>
+      <div className="work-caption"><h3>{project.name}</h3><p>{project.caption}</p></div>
+    </article>
+  );
+}
+
 export default function SelectedWorkSection() {
+  const [renovAgent, mythos, characterFoundry] = projects;
+
   return (
     <section id="portfolio" className="selected-work">
       <div className="cinema-section-inner">
         <h2 className="section-heading">Work</h2>
         <div className="selected-work-grid project-grid">
+          <AppProject project={renovAgent} />
+          <AppProject project={mythos} />
           <FeaturedClientWork />
           <VideoPopup vimeoId="707886560" title="Larry King Now" caption="Dominican Sisters Family Health Profile" poster="/larry-king-now.png" scope={['Produced the Dominican Sisters Family Health profile.']} youtube="https://www.youtube.com/@LarryKing" />
-          {projects.map(project => (
-            <article className="selected-project" key={project.name}>
-              <Dialog>
-                <ProjectThumbnail image={project.image} name={project.name} className={project.video ? 'selected-project-video' : ''} />
-                <DialogContent className="cinema-film-dialog selected-project-dialog">
-                  <DialogTitle>{project.name}</DialogTitle>
-                  <DialogDescription>{project.description}</DialogDescription>
-                  <ProjectScope items={project.scope} />
-                  {project.website && <ProjectLinks name={project.name} website={project.website} />}
-                  {project.video ? (
-                    <iframe className="selected-project-player" src={project.preview} title={`${project.name} demo on YouTube`} allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
-                  ) : (
-                    <iframe className="selected-project-site" src={project.preview} title={`${project.name} website preview`} sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin" />
-                  )}
-                </DialogContent>
-              </Dialog>
-              <div className="work-caption"><h3>{project.name}</h3><p>{project.caption}</p></div>
-            </article>
-          ))}
+          <WebDevelopmentCard />
+          <AppProject project={characterFoundry} />
           <VideoPopup vimeoId="1161859590" title={clientWorkDetails.jpMorgan.name} caption="Executive Leadership Series" scope={clientWorkDetails.jpMorgan.scope} website={clientWorkDetails.jpMorgan.website} />
         </div>
       </div>
