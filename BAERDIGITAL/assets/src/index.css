@@ -387,8 +387,8 @@ section[id] { scroll-margin-top: 64px; }
   inset: 0;
   background:
     linear-gradient(90deg, #000 0%, #000000e8 25%, transparent 75%),
-    radial-gradient(ellipse at 86% 44%, transparent 21%, #1b1b1b 21.5%, #666 23%, #262626 27%, #101010 29%, #777 30%, #202020 31.5%, #0b0b0b 39%, #444 40%, #121212 45%, transparent 46%),
-    linear-gradient(145deg, #000 42%, #252525 76%, #000);
+    radial-gradient(ellipse at 86% 44%, transparent 21%, #142022 21.5%, #42858d 23%, #1b3034 27%, #0d1719 29%, #6a949a 30%, #1d2c30 31.5%, #0b1113 39%, #2e595f 40%, #121b1e 45%, transparent 46%),
+    linear-gradient(145deg, #000 42%, #10272c 76%, #000);
 }
 .cinema-hero h1 { font-size: clamp(46px, 7.2vw, 112px); letter-spacing: -.075em; line-height: .98; }
 .cinema-hero-description { max-width: 44ch; margin-top: 20px; color: #c9d4dc; }
@@ -441,8 +441,8 @@ section[id] { scroll-margin-top: 64px; }
 .project-thumbnail:focus-visible { outline: 2px solid var(--cinema-cyan); outline-offset: 4px; }
 .project-thumbnail:focus-visible :is(img, .development-diagram) { transform: scale(1.035); }
 @media (hover: hover) and (pointer: fine) {
-  .project-thumbnail :is(img, .development-diagram) { filter: grayscale(1); }
-  .project-thumbnail:is(:hover, :focus-visible) :is(img, .development-diagram) { filter: grayscale(0); transform: scale(1.035); }
+  .project-thumbnail :is(img, .development-diagram) { filter: saturate(.5); }
+  .project-thumbnail:is(:hover, :focus-visible) :is(img, .development-diagram) { filter: saturate(1); transform: scale(1.035); }
 }
 .development-thumbnail { display: grid; place-items: center; border: 1px solid #ffffff25; background: #111; }
 .development-diagram { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 2vw, 28px); width: 86%; }
