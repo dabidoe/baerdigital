@@ -2,6 +2,8 @@ export const clientWorkDetails = {
   bremoir: {
     name: 'Bremoir Watches',
     contribution: 'We produced the Lexington watch spot and managed the ad campaign.',
+    website: 'https://www.bremoir.com/',
+    instagram: 'https://www.instagram.com/bremoir/',
   },
   paddock: {
     name: 'Paddock Blade',

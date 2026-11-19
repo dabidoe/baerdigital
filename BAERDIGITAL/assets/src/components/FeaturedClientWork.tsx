@@ -11,8 +11,6 @@ const cases = [
     description: 'An Art Deco watch inspired by the Chrysler Building.',
     film: { title: 'Bremoir Lexington product ad', src: 'https://www.youtube-nocookie.com/embed/N1HYHvNQthg' },
     poster: '/bremoir-lexington-case.jpg',
-    website: 'https://www.bremoir.com/',
-    instagram: 'https://www.instagram.com/bremoir/',
   },
   {
     id: 'paddock-blade',

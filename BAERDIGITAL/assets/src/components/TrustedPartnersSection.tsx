@@ -14,6 +14,24 @@ const brands = [
   { name: 'Larry King Now', image: larryKingLogo, url: 'https://www.youtube.com/@LarryKing', treatment: 'larry-mark' },
 ];
 
+const testimonials = [
+  {
+    quote: 'Baer Digital Studios brings the technical precision and calm under pressure required for high-profile network production. When the stakes are broadcast-level, they are the professionals you want behind the lens.',
+    name: 'Wendy Walker',
+    credit: 'Executive Producer, Larry King Now',
+  },
+  {
+    quote: "Exceptional reliability and executive presence. The team at Baer Digital Studios didn't just capture an interview; he captured the institutional authority required for our global leadership series that aligned with our standards.",
+    name: 'Jon Forman',
+    credit: 'Head of Intraday Liquidity, J.P. Morgan Chase',
+  },
+  {
+    quote: 'Baer Digital Studios are experts crafting compelling content that resonated with our customers, crafting content into a high-engagement series. They gave our brand the voice and the cinema-grade authority we needed to own the market.',
+    name: 'Jake Fowler',
+    credit: 'CEO, Paddock Blade US3',
+  },
+];
+
 export default function TrustedPartnersSection() {
   const { bremoir, paddock, jpMorgan } = clientWorkDetails;
 
@@ -40,6 +58,17 @@ export default function TrustedPartnersSection() {
             </li>
           ))}
         </ul>
+        <div className="client-testimonials" id="testimonials">
+          <h2 className="section-heading">Client testimonials</h2>
+          <div className="client-testimonial-grid">
+            {testimonials.map(({ quote, name, credit }) => (
+              <figure key={name}>
+                <blockquote><p>“{quote}”</p></blockquote>
+                <figcaption><strong>{name}</strong><span>{credit}</span></figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
